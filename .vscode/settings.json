@@ -1,0 +1,5 @@
+{
+    "phpcs.executablePath": "H:\\xampp\\php\\php.exe",
+    "phpcs.standard": "null",
+    "phpcs.autoConfigSearch": true
+}
