@@ -45,11 +45,12 @@
             </thead>
             <tbody>
             <?php $no=0; foreach ($query->result() as $row) { $no++ ?>
+            
             <tr>
-                <!-- <td><input type="checkbox" class="checkbox" name="id_post[]" value="<?=$row->id_post;?>" /></td> -->
+                <!-- <td><input type="checkbox" class="checkbox" name="id_post[]" value="<?=$row->perkara_id;?>" /></td> -->
                 <td><?=$no;?></td>
-                <td><?=$row->hari_input;?> / <?=$row->tgl_input; ?></td>
-                <td><?=$row->no_print; ?></td>
+                <td><?=$row->tanggal_pendaftaran;?></td>
+                <td><?=$row->jenis_perkara_nama; ?></td>
                 <td><?=$row->no_putusan; ?></td>
                 <td><?=indo_date($row->tgl_putusan); ?></td>
                 <td><?=$row->nama_terpidana;?></td>

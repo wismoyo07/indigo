@@ -29,10 +29,8 @@
             <thead>
             <tr>
                 <th style="width: 50px">NO</th>
-                <th>NAMA JAKSA</th>
-                <th>PANGKAT / NIP</th>
-                <th>JABATAN</th>
-                <th>AKSI</th>
+                <th>JENIS INSTRUMEN</th>
+                
             </tr>
             </thead>
             <tbody>

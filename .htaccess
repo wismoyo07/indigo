@@ -3,7 +3,8 @@
         RewriteEngine on
         DirectoryIndex index.php
         RewriteCond %{REQUEST_FILENAME} !-f
-        RewriteCond %{REQUEST_FILENAME} !-d
+        RewriteCond %{REQUEST_FILENAME} !-
+        php_value memory_limit 1024M
         <IfModule mod_php5.c>
                 RewriteRule ^(.*)$ index.php/$1 [L]
         </IfModule>

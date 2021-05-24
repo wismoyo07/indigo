@@ -3,11 +3,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Suratpendapathukum extends MY_Controller {
 
-   private $pk = 'id_pendapathukum';
-   private $table = 'pendapathukum';
+   // private $pk = 'id_pendapathukum';
+   // private $table = 'pendapathukum';
+
+   private $pk = 'perkara_id';
+   private $table = 'perkara';
 
    public function __construct() {
       parent::__construct();
+      $this->sipp = $this->load->database('dbsipp', TRUE);
    }
 
    public function index()
@@ -17,12 +21,16 @@ class Suratpendapathukum extends MY_Controller {
       $this->data['posts'] = $this->data['post'] = TRUE;
       $this->data['tombol'] = 'Tambah';
       $this->data['alert'] = $this->session->flashdata('alert');
-      $this->data['query'] = $this->db
-      ->select('p.*, c.id_jaksa, c.nama_jaksa, d.*')
-         ->join('serahterimabb d', 'p.id_serahterimabb = d.id_serahterima', 'LEFT')      
-         ->join('jaksa c', 'p.id_jaksa = c.id_jaksa', 'LEFT')
-         ->order_by('p.tgl_input', 'DESC')
-         ->get($this->table . ' p');
+      // $this->data['query'] = $this->db
+      // ->select('p.*, c.id_jaksa, c.nama_jaksa, d.*')
+         // ->join('serahterimabb d', 'p.id_serahterimabb = d.id_serahterima', 'LEFT')      
+         // ->join('jaksa c', 'p.id_jaksa = c.id_jaksa', 'LEFT')
+         // ->order_by('p.tgl_input', 'DESC')
+         // ->get($this->table . ' p');
+      
+      $this->data['query'] = $this->sipp
+      ->select('perkara.*')
+         ->get($this->table. ' perkara');
       
       $this->data['konten'] = 'admin/pendapathukum/index';
       $this->load->view('admin/layout/index', $this->data);
