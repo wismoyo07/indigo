@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Suratpendapathukum extends MY_Controller {
+class Perkara extends MY_Controller {
 
    // private $pk = 'id_pendapathukum';
    // private $table = 'pendapathukum';
@@ -30,6 +30,7 @@ class Suratpendapathukum extends MY_Controller {
       
       $this->data['query'] = $this->sipp
       ->select('perkara.*')
+         ->order_by('perkara_id', 'DESC')
          ->get($this->table. ' perkara');
       
       $this->data['konten'] = 'admin/perkara/index';

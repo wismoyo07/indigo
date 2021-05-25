@@ -1,10 +1,10 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Serahterimabb extends MY_Controller {
+class Input_inst extends MY_Controller {
 
-   private $pk = 'id_serahterima';
-   private $table = 'serahterimabb';
+   private $pk = 'id_input';
+   private $table = 'input_instrumen';
 
    public function __construct() {
       parent::__construct();
@@ -13,18 +13,20 @@ class Serahterimabb extends MY_Controller {
    public function index()
    {
       $this->load->helper('text');
-      $this->data['judul'] = 'Data Serah Terima BB';
+      $this->data['judul'] = 'Data Instrumen Masuk';
       $this->data['posts'] = $this->data['post'] = TRUE;
-      $this->data['tombol'] = 'Tambah';
+      /** $this->data['tombol'] = 'Tambah'; */
       $this->data['alert'] = $this->session->flashdata('alert');
       $this->data['query'] = $this->db
-      ->select('p.*, c.nama_jaksa as nama_jaksa1, d.nama_jaksa as nama_jaksa2, c.id_jaksa, d.id_jaksa')
+      /** ->select('p.*, c.nama_jaksa as nama_jaksa1, d.nama_jaksa as nama_jaksa2, c.id_jaksa, d.id_jaksa')
          ->join('jaksa c', 'p.id_jaksa1 = c.id_jaksa', 'LEFT')
          ->join('jaksa d', 'p.id_jaksa2 = d.id_jaksa', 'LEFT')
          ->order_by('p.tgl_input_bb', 'DESC')
-         ->get($this->table . ' p');
-      
-      $this->data['konten'] = 'admin/serahterimabb/index';
+         ->get($this->table . ' p'); */
+      ->select('input_instrumen.*')
+         ->order_by('input_instrumen.id_input', 'DESC')
+         ->get($this->table . ' input_instrumen');
+      $this->data['konten'] = 'admin/input_inst/index';
       $this->load->view('admin/layout/index', $this->data);
    }
 
@@ -42,13 +44,13 @@ class Serahterimabb extends MY_Controller {
          }
          redirect(uri_string());
       } else {
-         $this->data['judul'] = 'Tambah Surat';
+         $this->data['judul'] = 'Tambah Instrumen';
          $this->data['tombol'] = 'Simpan';
-         $this->data['jaksa'] = $this->m_database->dropdown('id_jaksa', 'nama_jaksa', 'jaksa');
+         $this->data['jenis_perkara'] = $this->m_database->dropdown('id_jaksa', 'nama_jaksa', 'jaksa');
          $this->data['action'] = site_url(uri_string());
          $this->data['alert'] = $this->session->flashdata('alert');
          $this->data['query'] = FALSE;
-         $this->data['konten'] = 'admin/serahterimabb/tambah';
+         $this->data['konten'] = 'admin/input_inst/tambah';
          $this->load->view('admin/layout/index', $this->data);
       }
    }
@@ -70,7 +72,7 @@ class Serahterimabb extends MY_Controller {
          $this->data['action'] = site_url(uri_string());
          $this->data['posts'] = $this->data['post'] = TRUE;
          $this->data['alert'] = $this->session->flashdata('alert');
-         $this->data['jaksa'] = $this->m_database->dropdown('id_jaksa', 'nama_jaksa', 'jaksa');
+         $this->data['input_inst'] = $this->m_database->dropdown('id_jaksa', 'nama_jaksa', 'jaksa');
          $this->data['query'] = $this->m_database->find($this->table, $this->pk, $id)->row_array();
          $this->data['konten'] = 'admin/serahterimabb/tambah';
          $this->load->view('admin/layout/index', $this->data);

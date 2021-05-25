@@ -51,7 +51,7 @@
             <li><a href="#"><i class="fa fa-pencil"></i> Tambah Data Akta</a></li>  
           </ul> -->
         <li class="">
-          <a href="<?= site_url('serahterimabb');?>">
+          <a href="<?= site_url('perkara');?>">
             <i class="fa fa-envelope"></i> <span>PERDATA</span>
             <span class="pull-right-container">
             <!-- <i class="fa fa-angle-left pull-right"></i> -->
@@ -63,8 +63,8 @@
         </li>
         </li>     
         <li class="">
-          <a href="<?= site_url('suratpendapathukum');?>">
-            <i class="fa fa-mortar-board"></i> <span>SURAT PENDAPAT HUKUM</span>
+          <a href="<?= site_url('input_inst');?>">
+            <i class="fa fa-mortar-board"></i> <span>INSTRUMEN MASUK</span>
             <span class="pull-right-container">
             <!-- <i class="fa fa-angle-left pull-right"></i> -->
             </span>

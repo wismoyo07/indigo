@@ -17,7 +17,7 @@
     <div class="col-xs-12">
     <?=$alert;?>
     <div class="btn-group" style="margin-bottom:10px;">
-            <a href="<?=site_url('serahterimabb/tambah');?>" class="btn btn-sm bg-green btn-flat"><i class="glyphicon glyphicon-plus"></i> TAMBAH</a>
+            <a href="<?=site_url('input_inst/tambah');?>" class="btn btn-sm bg-green btn-flat"><i class="glyphicon glyphicon-plus"></i> TAMBAH</a>
         </div>
       <div class="box">
         <div class="box-header">
@@ -31,7 +31,7 @@
                 <tr>
                   <!-- <th style="width:10px"><input type="checkbox" id="check-all"/></th> -->
                   <th style="width:10px;">NO</th>
-                  <th width="">HARI/TGL</th>
+                  <th width="">Jenis Instrumen</th>
                   <th>NO SURAT</th>
                   <th>NO PUTUSAN</th>
                   <th>TGL PUTUSAN</th>
@@ -58,9 +58,9 @@
                 <td><?=$row->nama_jaksa2;?></td>
                 <td>
                     <div class="btn-group">
-                        <a href="<?=site_url('serahterimabb/update/'.$row->id_serahterima);?>" class="btn btn-sm bg-teal" data-toggle="tooltip" data-original-title="Edit"><i class="glyphicon glyphicon-edit"></i></a>
-                        <a onClick="return confirm('Apakah anda yakin data akan dihapus ?')" href="<?=site_url('serahterimabb/delete/'.$row->id_serahterima);?>" class="btn btn-sm bg-red" data-toggle="tooltip" data-original-title="Hapus"><i class="glyphicon glyphicon-trash"></i></a>
-                        <a target="_blank" onClick="return confirm('CETAK SURAT SERAH TERIMA BB ?')" href="<?=site_url('serahterimabb/cetak/'.$row->id_serahterima);?>" class="btn btn-sm bg-yellow" data-toggle="tooltip" data-original-title="Print Surat Serah Terima BB"><i class="glyphicon glyphicon-print"></i></a>
+                        <a href="<?=site_url('input_inst/update/'.$row->id_input);?>" class="btn btn-sm bg-teal" data-toggle="tooltip" data-original-title="Edit"><i class="glyphicon glyphicon-edit"></i></a>
+                        <a onClick="return confirm('Apakah anda yakin data akan dihapus ?')" href="<?=site_url('input_inst/delete/'.$row->id_input);?>" class="btn btn-sm bg-red" data-toggle="tooltip" data-original-title="Hapus"><i class="glyphicon glyphicon-trash"></i></a>
+                        <a target="_blank" onClick="return confirm('CETAK SURAT SERAH TERIMA BB ?')" href="<?=site_url('input_inst/cetak/'.$row->id_input);?>" class="btn btn-sm bg-yellow" data-toggle="tooltip" data-original-title="Print INSTRUMEN"><i class="glyphicon glyphicon-print"></i></a>
                     </div>
                 </td>
             </tr>
