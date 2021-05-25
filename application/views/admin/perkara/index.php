@@ -16,9 +16,9 @@
   <div class="row">
     <div class="col-xs-12">
     <?=$alert;?>
-    <div class="btn-group" style="margin-bottom:10px;">
+<!-- <div class="btn-group" style="margin-bottom:10px;">
             <a href="<?=site_url('suratpendapathukum/tambah');?>" class="btn btn-sm bg-green btn-flat"><i class="glyphicon glyphicon-plus"></i> TAMBAH</a>
-        </div>
+        </div> -->
       <div class="box">
         <div class="box-header">
           <!-- <h3 class="box-title"><?=$judul;?></h3> -->
@@ -36,10 +36,10 @@
                   <th>NO PUTUSAN</th>
                   <th>TGL PUTUSAN</th>
                   <th>NAMA TERPIDANA</th>
-                  <th>BARANG BUKTI</th>
+                  <!-- <th>BARANG BUKTI</th>
                   <th>PIHAK 1</th>
                   <th>TGL INPUT</th>
-                  <th style="width:85px;">&nbsp;</th>
+                  <th style="width:85px;">&nbsp;</th>  -->
                 </tr>
             </tr>
             </thead>
@@ -50,20 +50,20 @@
                 <!-- <td><input type="checkbox" class="checkbox" name="id_post[]" value="<?=$row->perkara_id;?>" /></td> -->
                 <td><?=$no;?></td>
                 <td><?=$row->tanggal_pendaftaran;?></td>
-                <td><?=$row->jenis_perkara_nama; ?></td>
-                <td><?=$row->no_putusan; ?></td>
-                <td><?=indo_date($row->tgl_putusan); ?></td>
-                <td><?=$row->nama_terpidana;?></td>
-                <td><?=$row->barang_bukti;?></td>
+                <td><?=$row->nomor_perkara; ?></td>
+                <td><?=$row->jenis_perkara_text; ?></td>
+                <td><?=$row->para_pihak; ?></td>
+                <td><?=$row->proses_terakhir_text;?></td>
+                <!-- <td><?=$row->barang_bukti;?></td>
                 <td><?=$row->nama_jaksa;?></td>
-                <td><?=indo_date($row->tgl_input);?></td>
-                <td>
+                <td><?=indo_date($row->tgl_input);?></td> -->
+                <!-- <td>
                     <div class="btn-group">
                         <a href="<?=site_url('suratpendapathukum/update/'.$row->id_pendapathukum);?>" class="btn btn-sm bg-teal" data-toggle="tooltip" data-original-title="Edit"><i class="glyphicon glyphicon-edit"></i></a>
                         <a onClick="return confirm('Apakah anda yakin data akan dihapus ?')" href="<?=site_url('suratpendapathukum/delete/'.$row->id_pendapathukum);?>" class="btn btn-sm bg-red" data-toggle="tooltip" data-original-title="Hapus"><i class="glyphicon glyphicon-trash"></i></a>
                         <a target="_blank" onClick="return confirm('CETAK SURAT SERAH TERIMA BB ?')" href="<?=site_url('suratpendapathukum/cetak/'.$row->id_pendapathukum);?>" class="btn btn-sm bg-yellow" data-toggle="tooltip" data-original-title="Print Surat Serah Terima BB"><i class="glyphicon glyphicon-print"></i></a>
                     </div>
-                </td>
+                </td> -->
             </tr>
             <?php } ?>
             </tbody>

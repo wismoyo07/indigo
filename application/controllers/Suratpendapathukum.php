@@ -17,7 +17,7 @@ class Suratpendapathukum extends MY_Controller {
    public function index()
    {
       $this->load->helper('text');
-      $this->data['judul'] = 'Data Surat Pendapat hukum';
+      $this->data['judul'] = 'Data Perkara';
       $this->data['posts'] = $this->data['post'] = TRUE;
       $this->data['tombol'] = 'Tambah';
       $this->data['alert'] = $this->session->flashdata('alert');
@@ -32,11 +32,11 @@ class Suratpendapathukum extends MY_Controller {
       ->select('perkara.*')
          ->get($this->table. ' perkara');
       
-      $this->data['konten'] = 'admin/pendapathukum/index';
+      $this->data['konten'] = 'admin/perkara/index';
       $this->load->view('admin/layout/index', $this->data);
    }
 
-   public function tambah()
+   /** public function tambah()
    {
       if ($_POST) {
          if ($this->validation()) {
@@ -67,17 +67,17 @@ class Suratpendapathukum extends MY_Controller {
          $this->data['konten'] = 'admin/pendapathukum/tambah';
          $this->load->view('admin/layout/index', $this->data);
       }
-   }
+   } */
 
    public function get_detail_noputusan(){
-        $id=$this->input->post('no_putusan');
+        $id=$this->input->post('nomor_perkara');
         $data=array(
             'detail'=>$this->m_database->getdatabyid($id),
         );
-        $this->load->view('admin/pendapathukum/detail', $data);
+        $this->load->view('admin/perkara/detail', $data);
     }
 
-   public function update() {
+   /** public function update() {
       $id = $this->uri->segment(3);
       if ($_POST) {
          if ($this->validation()) {
@@ -111,9 +111,9 @@ class Suratpendapathukum extends MY_Controller {
          $this->session->set_flashdata('alert', alert('error', status('404')));
          redirect($this->uri->segment(1));
       }
-   }
+   } */
 
-   public function delete() {
+   /** public function delete() {
       if (isset($_POST[$this->pk]) && isset($_POST['delete'])) {
          $counter = 0;
          foreach ($_POST[$this->pk] as $key) {
@@ -142,7 +142,7 @@ class Suratpendapathukum extends MY_Controller {
          $this->session->set_flashdata('alert', alert('warning', status('not_selected')));
       }
       redirect($this->uri->segment(1));
-   }
+   } */
 
    private function field_data($type = 'tambah', $photo = NULL) {
       $data['hari_input'] = $this->input->post('hari_input');
