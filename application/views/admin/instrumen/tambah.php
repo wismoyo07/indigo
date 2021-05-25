@@ -18,14 +18,14 @@
                       
                 <div class="box-body">
                     <div class="form-group">
-                      <label class="col-md-2 control-label">NAMA JAKSA</label>
+                      <label class="col-md-2 control-label">JENIS INSTRUMEN</label>
 
                         <div class="col-sm-10">
-                            <input required autofocus type="text" class="form-control" name="nama_jaksa" value="<?=(set_value('nama_jaksa')) ? set_value('nama_jaksa') : $query['nama_jaksa']?>">
+                            <input required autofocus type="text" class="form-control" name="instrumen_nama" value="<?=(set_value('instrumen_nama')) ? set_value('instrumen_nama') : $query['instrumen_nama']?>">
                         </div>
                     </div>
 
-                    <div class="form-group">
+                   <!-- <div class="form-group">
                       <label class="col-md-2 control-label">PANGKAT</label>
 
                         <div class="col-sm-10">
@@ -47,12 +47,12 @@
                         <div class="col-sm-10">
                             <input required autofocus type="text" class="form-control" name="jabatan" value="<?=(set_value('jabatan')) ? set_value('jabatan') : $query['jabatan']?>">
                         </div>
-                    </div>
+                    </div> -->
 
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
                             <button type="submit" class="btn btn-success btn-sm btn-flat"><i class="fa fa-save"></i> <?=$tombol;?></button>
-                            <a href="<?=site_url('jaksa');?>" class="btn bg-orange btn-sm btn-flat"><i class="fa fa-angle-double-left"></i> Kembali</a>
+                            <a href="<?=site_url('instrumen');?>" class="btn bg-orange btn-sm btn-flat"><i class="fa fa-angle-double-left"></i> Kembali</a>
                         </div>
                     </div>
                 </div>

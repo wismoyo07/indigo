@@ -19,12 +19,12 @@
         <div class="inner">
           <h3><?= $jumlahjaksa; ?></h3>
 
-          <p>DATA JAKSA</p>
+          <p>JENIS INSTRUMEN</p>
         </div>
         <div class="icon">
           <i class="fa fa-mortar-board"></i>
         </div>
-        <a href="<?= site_url('posts'); ?>" class="small-box-footer">LIHAT DATA <i class="fa fa-arrow-circle-right"></i></a>
+        <a href="<?= site_url('instrumen'); ?>" class="small-box-footer">LIHAT DATA <i class="fa fa-arrow-circle-right"></i></a>
       </div>
     </div>
   

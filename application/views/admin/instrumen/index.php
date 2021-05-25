@@ -17,7 +17,7 @@
     <div class="col-xs-12">
     <?=$alert;?>
     <div class="btn-group" style="margin-bottom:10px;">
-            <a href="<?=site_url('jaksa/tambah');?>" class="btn btn-sm bg-green btn-flat"><i class="glyphicon glyphicon-plus"></i> TAMBAH</a>
+            <a href="<?=site_url('instrumen/tambah');?>" class="btn btn-sm bg-green btn-flat"><i class="glyphicon glyphicon-plus"></i> TAMBAH</a>
         </div>
       <div class="box">
         <div class="box-header">
@@ -37,13 +37,13 @@
             <?php $no=0; foreach ($query->result() as $row) { $no++ ?>
             <tr>
                 <td><?php echo $no; ?></td>
-                <td><?php echo $row->nama_jaksa; ?></td>
-                <td><?php echo $row->pangkat; ?> / <?php echo $row->nip; ?></td>
-                <td><?php echo $row->jabatan; ?></td>
+                <td><?php echo $row->instrumen_nama; ?></td>
+               <!--  <td><?php echo $row->pangkat; ?> / <?php echo $row->nip; ?></td>
+                <td><?php echo $row->jabatan; ?></td> -->
                 <td>
                     <div class="btn-group">
-                        <a href="<?=site_url('jaksa/edit/'.$row->id_jaksa);?>" class="btn btn-sm bg-teal" data-toggle="tooltip" data-original-title="Edit"><i class="glyphicon glyphicon-edit"></i> </a>
-                        <a onClick="return confirm('Apakah anda yakin data akan dihapus ?')" href="<?=site_url('jaksa/delete/'.$row->id_jaksa);?>" class="btn btn-sm bg-red" data-toggle="tooltip" data-original-title="Hapus"><i class="glyphicon glyphicon-trash"></i></a>
+                        <a href="<?=site_url('instrumen/edit/'.$row->id_instrumen);?>" class="btn btn-sm bg-teal" data-toggle="tooltip" data-original-title="Edit"><i class="glyphicon glyphicon-edit"></i> </a>
+                        <a onClick="return confirm('Apakah anda yakin data akan dihapus ?')" href="<?=site_url('instrumen/delete/'.$row->id_instrumen);?>" class="btn btn-sm bg-red" data-toggle="tooltip" data-original-title="Hapus"><i class="glyphicon glyphicon-trash"></i></a>
                     </div>
                 </td>
             </tr>

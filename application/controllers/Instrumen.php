@@ -1,18 +1,18 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Jaksa extends MY_Controller {
+class Instrumen extends MY_Controller {
 	
-	private $pk = 'id_jaksa';
-	private $table = 'jaksa';
+	private $pk = 'id_instrumen';
+	private $table = 'instrumen';
 
 	public function index()
 	{
-		$this->data['query'] = $this->db->order_by('id_jaksa', 'DESC')->get($this->table);
-		$this->data['judul'] = 'Data Jaksa';
+		$this->data['query'] = $this->db->order_by('id_instrumen', 'DESC')->get($this->table);
+		$this->data['judul'] = 'Jenis Instrumen';
 		$this->data['tombol'] = 'Tambah';
 		$this->data['alert'] = $this->session->flashdata('alert');
-		$this->data['konten'] = 'admin/jaksa/index';
+		$this->data['konten'] = 'admin/instrumen/index';
 		$this->load->view('admin/layout/index', $this->data);
 	}
 
@@ -30,22 +30,22 @@ class Jaksa extends MY_Controller {
 			}
 			redirect(uri_string());
 		} else {
-			$this->data['judul'] = 'Tambah Jaksa';
+			$this->data['judul'] = 'Tambah Instrumen';
 			$this->data['tombol'] = 'Simpan';
 			$this->data['action'] = site_url(uri_string());
 			$this->data['alert'] = $this->session->flashdata('alert');
 			$this->data['query'] = FALSE;
-			$this->data['konten'] = 'admin/jaksa/tambah';
+			$this->data['konten'] = 'admin/instrumen/tambah';
 			$this->load->view('admin/layout/index', $this->data);
 		}
 	}
 
 	public function edit()
 	{
-		$id_jaksa = $this->uri->segment(3);
+		$id_instrumen = $this->uri->segment(3);
 		if ($_POST) {
 			if ($this->validation()) {
-				if ($this->m_database->update($this->pk, $id_jaksa, $this->table, $this->field_data())) {
+				if ($this->m_database->update($this->pk, $id_instrumen, $this->table, $this->field_data())) {
 					$this->session->set_flashdata('alert', alert('success', status('updated')));
 				} else {
 					$this->session->set_flashdata('alert', alert('warning', status('ada')));
@@ -54,14 +54,14 @@ class Jaksa extends MY_Controller {
 				$this->session->set_flashdata('alert', alert('error', validation_errors()));
 			} 
 			redirect(uri_string());
-		} elseif ($id_jaksa && $id_jaksa != 0 && ctype_digit((string) $id_jaksa)) {
-			$this->data['judul'] = 'Edit Jaksa';
+		} elseif ($id_instrumen && $id_instrumen != 0 && ctype_digit((string) $id_instrumen)) {
+			$this->data['judul'] = 'Edit Instrumen';
 			$this->data['tombol'] = 'UPDATE';
 			$this->data['action'] = site_url(uri_string());
-			$this->data['posts'] = $this->data['jaksa'] = TRUE;
+			$this->data['posts'] = $this->data['instrumen'] = TRUE;
 			$this->data['alert'] = $this->session->flashdata('alert');
-			$this->data['query'] = $this->m_database->find($this->table, $this->pk, $id_jaksa)->row_array();
-			$this->data['konten'] = 'admin/jaksa/tambah';
+			$this->data['query'] = $this->m_database->find($this->table, $this->pk, $id_instrumen)->row_array();
+			$this->data['konten'] = 'admin/instrumen/tambah';
 			$this->load->view('admin/layout/index', $this->data);
 
 		} else {
@@ -72,20 +72,17 @@ class Jaksa extends MY_Controller {
 
 	private function field_data() {
 		return [
-			'nama_jaksa' => $this->input->post('nama_jaksa'),
-			'pangkat' => $this->input->post('pangkat'),
-			'nip' => $this->input->post('nip'),
-			'jabatan' => $this->input->post('jabatan'),
+			'instrumen_nama' => $this->input->post('instrumen_nama'),
 		];
 	}
 
 	private function validation() {
 		$this->load->library('form_validation');
-		$this->form_validation->set_rules('nama_jaksa', 'Jaksa', 'trim|required');
-		$this->form_validation->set_rules('pangkat', 'Pangkat', 'trim|required');
-		$this->form_validation->set_rules('nip', 'NIP', 'trim|required');
-		$this->form_validation->set_rules('jabatan', 'Jabatan', 'trim|required');
-		$this->form_validation->set_error_delimiters('', '<br>');
+		$this->form_validation->set_rules('instrumen_nama', 'Instrumen', 'trim|required');
+		// $this->form_validation->set_rules('pangkat', 'Pangkat', 'trim|required');
+		// $this->form_validation->set_rules('nip', 'NIP', 'trim|required');
+		// $this->form_validation->set_rules('jabatan', 'Jabatan', 'trim|required');
+		// $this->form_validation->set_error_delimiters('', '<br>');
 		return $this->form_validation->run();
 	}
 
@@ -119,14 +116,14 @@ class Jaksa extends MY_Controller {
 	}
 
 
-	private function is_used($id_jaksa) {
+	private function is_used($id_instrumen) {
 		return $this->db
-			->where('id_jaksa1', $id_jaksa)
-			->count_all_results('serahterimabb') > 0 ? true : false;
+			->where('id_instrumen', $id_instrumen)
+			->count_all_results('instrumen') > 0 ? true : false;
 	}
 
 
 }
 
-/* End of file jaksa.php */
-/* Location: ./application/controllers/jaksa.php */
+/* End of file instrumen.php */
+/* Location: ./application/controllers/instrumen.php */

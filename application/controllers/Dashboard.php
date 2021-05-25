@@ -9,7 +9,7 @@ class Dashboard extends MY_Controller {
 			redirect('login');
 		}
 
-		$this->data['jumlahjaksa'] = $this->db->from('jaksa')->count_all_results();
+		$this->data['jumlahjaksa'] = $this->db->from('instrumen')->count_all_results();
 		$this->data['jumlahserahterimabb'] = $this->db->from('serahterimabb')->count_all_results();
 		$this->data['pendapathukum'] = $this->db->from('pendapathukum')->count_all_results();
 

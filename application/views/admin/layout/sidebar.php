@@ -31,7 +31,7 @@
           </a>
         </li>
         <li class="">
-          <a href="<?= site_url('jaksa'); ?>">
+          <a href="<?= site_url('instrumen'); ?>">
             <i class="fa fa-users"></i> <span>DATA INSTRUMEN</span>
             <span class="pull-right-container">
             <!-- <i class="fa fa-angle-left pull-right"></i> -->
