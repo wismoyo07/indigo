@@ -10,25 +10,25 @@ class Input_inst extends MY_Controller {
       parent::__construct();
    }
 
-   public function index()
+   /** public function index()
    {
       $this->load->helper('text');
       $this->data['judul'] = 'Data Instrumen Masuk';
       $this->data['posts'] = $this->data['post'] = TRUE;
       /** $this->data['tombol'] = 'Tambah'; */
-      $this->data['alert'] = $this->session->flashdata('alert');
-      $this->data['query'] = $this->db
+      // $this->data['alert'] = $this->session->flashdata('alert');
+      // $this->data['query'] = $this->db
       /** ->select('p.*, c.nama_jaksa as nama_jaksa1, d.nama_jaksa as nama_jaksa2, c.id_jaksa, d.id_jaksa')
          ->join('jaksa c', 'p.id_jaksa1 = c.id_jaksa', 'LEFT')
          ->join('jaksa d', 'p.id_jaksa2 = d.id_jaksa', 'LEFT')
          ->order_by('p.tgl_input_bb', 'DESC')
-         ->get($this->table . ' p'); */
-      ->select('input_instrumen.*')
-         ->order_by('input_instrumen.id_input', 'DESC')
-         ->get($this->table . ' input_instrumen');
-      $this->data['konten'] = 'admin/input_inst/index';
-      $this->load->view('admin/layout/index', $this->data);
-   }
+         ->get($this->table . ' p');
+      // ->select('input_instrumen.*')
+      //   ->order_by('input_instrumen.id_input', 'DESC')
+      //   ->get($this->table . ' input_instrumen');
+      // $this->data['konten'] = 'admin/input_inst/index';
+     // $this->load->view('admin/layout/index', $this->data);
+   // } 
 
    public function tambah()
    {
@@ -53,7 +53,41 @@ class Input_inst extends MY_Controller {
          $this->data['konten'] = 'admin/input_inst/tambah';
          $this->load->view('admin/layout/index', $this->data);
       }
-   }
+   } */
+
+   public function index()
+	{
+		$this->data['query'] = $this->db->order_by('id_input', 'DESC')->get($this->table);
+		$this->data['judul'] = 'Instrumen Masuk';
+		$this->data['tombol'] = 'Tambah';
+		$this->data['alert'] = $this->session->flashdata('alert');
+		$this->data['konten'] = 'admin/input_inst/index';
+		$this->load->view('admin/layout/index', $this->data);
+	}
+
+	public function tambah()
+	{
+		if ($_POST) {
+			if ($this->validation()) {
+				if ($this->db->insert($this->table, $this->field_data())) {
+					$this->session->set_flashdata('alert', alert('success', status('dibuat')));
+				} else {
+					$this->session->set_flashdata('alert', alert('warning', status('ada')));
+				}
+			} else {
+				$this->session->set_flashdata('alert', alert('error', validation_errors()));
+			}
+			redirect(uri_string());
+		} else {
+			$this->data['judul'] = 'Input Instrumen';
+			$this->data['tombol'] = 'Simpan';
+			$this->data['action'] = site_url(uri_string());
+			$this->data['alert'] = $this->session->flashdata('alert');
+			$this->data['query'] = FALSE;
+			$this->data['konten'] = 'admin/input_inst/tambah';
+			$this->load->view('admin/layout/index', $this->data);
+		}
+	}
 
    public function update() {
       $id = $this->uri->segment(3);
