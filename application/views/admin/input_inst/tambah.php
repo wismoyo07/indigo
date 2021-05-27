@@ -12,10 +12,21 @@
             <?=$alert;?> 
             <?=form_open_multipart($action, array('role' => 'form', 'class'=>'form-horizontal form-bordered'));?>
         <div class="form-body">
+        <div class="form-group">
+                <label class="col-md-2 control-label">Jenis Instrumen</label>
+                <div class="col-md-10">
+                    <select name="id_instrumen" class="form-control" style="width: 400px">
+                        <option value="penggugat">Penggugat</option>
+                        <option value="pemohon">Pemohon</option>
+                        <option value="tergugat">Tergugat</option>
+                        <option value="termohon">Termohon</option>
+                    </select>
+                </div>
+            </div>            
             <div class="form-group">
                 <label class="col-md-2 control-label">No Perkara</label>
                 <div class="col-md-10">
-                    <input style="width: 400px" required autofocus placeholder="Hari" type="text" class="form-control" name="hari_input_bb" value="<?=(set_value('hari_input_bb')) ? set_value('hari_input_bb') : $query['hari_input_bb']?>">
+                    <input style="width: 400px" required autofocus placeholder="Hari" type="text" class="form-control" name="no_perkara" value="<?=(set_value('no_perkara')) ? set_value('no_perkara') : $query['no_perkara']?>">
                 </div>
             </div>
             <div class="form-group">
