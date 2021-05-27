@@ -15,12 +15,13 @@
         <div class="form-group">
                 <label class="col-md-2 control-label">Jenis Instrumen</label>
                 <div class="col-md-10">
-                    <select name="id_instrumen" class="form-control" style="width: 400px">
+                    <!-- <select name="id_instrumen" class="form-control" style="width: 400px">
                         <option value="penggugat">Penggugat</option>
                         <option value="pemohon">Pemohon</option>
                         <option value="tergugat">Tergugat</option>
                         <option value="termohon">Termohon</option>
-                    </select>
+                    </select> -->
+                    <?=form_dropdown('id_instrumen', $instrumen, $query['id_instrumen'], "required class='form-control chosen-select' style='width: 400px'");?>
                 </div>
             </div>            
             <div class="form-group">

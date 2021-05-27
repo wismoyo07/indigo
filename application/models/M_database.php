@@ -106,7 +106,7 @@ class M_database extends CI_Model {
 		return [];
 	}
 
-	public function dropdownjenisperkara($key, $value, $table, $is_null = FALSE) {
+	public function dropdownsipp($key, $value, $table, $is_null = FALSE) {
 		$query = $this->sipp->get($table);
 		if ($query->num_rows() > 0) {
 			if ($is_null != FALSE) {
