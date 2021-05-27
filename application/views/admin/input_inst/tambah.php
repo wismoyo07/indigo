@@ -13,44 +13,49 @@
             <?=form_open_multipart($action, array('role' => 'form', 'class'=>'form-horizontal form-bordered'));?>
         <div class="form-body">
             <div class="form-group">
-                <label class="col-md-2 control-label">HARI</label>
+                <label class="col-md-2 control-label">No Perkara</label>
                 <div class="col-md-10">
                     <input style="width: 400px" required autofocus placeholder="Hari" type="text" class="form-control" name="hari_input_bb" value="<?=(set_value('hari_input_bb')) ? set_value('hari_input_bb') : $query['hari_input_bb']?>">
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-md-2 control-label">TANGGAL INPUT SURAT</label>
+                <label class="col-md-2 control-label">Hari / Tanggal Sidang</label>
                 <div class="col-md-10">
                     <input style="width: 400px" required autofocus placeholder="Tanggal" type="date" class="form-control" name="tgl_input_bb" value="<?=(set_value('tgl_input_bb')) ? set_value('tgl_input_bb') : $query['tgl_input_bb']?>">
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-md-2 control-label">NO SURAT</label>
+                <label class="col-md-2 control-label">PA. Tujuan</label>
                 <div class="col-md-10">
                     <input style="width: 400px" required autofocus placeholder="NO PRINT" type="text" class="form-control" name="no_print" value="<?=(set_value('no_print')) ? set_value('no_print') : $query['no_print']?>">
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-md-2 control-label">TGL SURAT</label>
+                <label class="col-md-2 control-label">Panggilan Untuk</label>
                 <div class="col-md-10">
-                    <input style="width: 400px" required autofocus placeholder="Tanggal" type="date" class="form-control" name="tgl_no_print" value="<?=(set_value('tgl_no_print')) ? set_value('tgl_no_print') : $query['tgl_no_print']?>">
+                    <select name="status_bb" class="form-control" style="width: 400px">
+                        <option value="penggugat">Penggugat</option>
+                        <option value="pemohon">Pemohon</option>
+                        <option value="tergugat">Tergugat</option>
+                        <option value="termohon">Termohon</option>
+                    </select>
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-md-2 control-label">BARANG BUKTI</label>
+                <label class="col-md-2 control-label">Nama Jurusita / JSP</label>
                 <div class="col-md-10">
                     <textarea style="width: 400px" class="form-control" name="barang_bukti" required autofocus placeholder=""><?=(set_value('barang_bukti')) ? set_value('barang_bukti') : $query['barang_bukti']?></textarea>
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-md-2 control-label">NAMA TERPIDANA</label>
+                <label class="col-md-2 control-label">Ongkos Panggilan</label>
                 <div class="col-md-10">
                     <input style="width: 400px" required autofocus placeholder="" type="text" class="form-control" name="nama_terpidana" value="<?=(set_value('nama_terpidana')) ? set_value('nama_terpidana') : $query['nama_terpidana']?>">
                 </div>
             </div>
 
             <div class="form-group">
-                <label class="col-md-2 control-label">PIHAK 1</label>
+                <label class="col-md-2 control-label">Ketua Majelis</label>
                 <div class="col-md-10">
                     <?=form_dropdown('id_jaksa1', $jaksa, $query['id_jaksa1'], "required class='form-control' style='width: 400px'");?>
                 </div>  
