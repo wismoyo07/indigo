@@ -16,23 +16,57 @@
                 <label class="col-md-2 control-label">Jenis Instrumen</label>
                 <div class="col-md-10">
                     <select name="id_instrumen" class="form-control" style="width: 400px">
-                        <option value="penggugat">Penggugat</option>
-                        <option value="pemohon">Pemohon</option>
-                        <option value="tergugat">Tergugat</option>
-                        <option value="termohon">Termohon</option>
+                        <option value="---">Pilih Jenis Instrumen</option>
+                        <?php
+                            //Membuat koneksi ke database akademik
+                            $kon = mysqli_connect("localhost",'root',"","indigo");
+                            if (!$kon){
+                                die("Koneksi database gagal:".mysqli_connect_error());
+                            }
+                                
+                            //Perintah sql untuk menampilkan semua data pada tabel jurusan
+                                $sql="select * from instrumen";
+
+                                $hasil=mysqli_query($kon,$sql);
+                                while ($data = mysqli_fetch_array($hasil)) {
+                            ?>
+                                <option value="<?php echo $data['id_instrumen'];?>"><?php echo $data['instrumen_nama'];?></option>
+                            <?php 
+                                }
+                            ?>
                     </select>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-md-2 control-label">No Perkara</label>
-                <div class="col-md-10">
-                    <input style="width: 400px" required autofocus placeholder="Hari" type="text" class="form-control" name="no_perkara" value="<?=(set_value('no_perkara')) ? set_value('no_perkara') : $query['no_perkara']?>">
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-md-2 control-label">Hari / Tanggal Sidang</label>
                 <div class="col-md-10">
                     <input style="width: 400px" required autofocus placeholder="Tanggal" type="date" class="form-control" name="tgl_input_bb" value="<?=(set_value('tgl_input_bb')) ? set_value('tgl_input_bb') : $query['tgl_input_bb']?>">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label">No Perkara</label>
+                <div class="col-md-10">
+                    <!-- <input style="width: 400px" required autofocus placeholder="Hari" type="text" class="form-control" name="no_perkara" value="<?=(set_value('no_perkara')) ? set_value('no_perkara') : $query['no_perkara']?>"> -->
+                    <select name="no_perkara" class="form-control" style="width: 400px">
+                        <option value="---">Pilih No. Perkara</option>
+                        <?php
+                            //Membuat koneksi ke database akademik
+                            $kon = mysqli_connect("localhost",'root',"","simalungun");
+                            if (!$kon){
+                                die("Koneksi database gagal:".mysqli_connect_error());
+                            }
+                                
+                            //Perintah sql untuk menampilkan semua data pada tabel jurusan
+                                $sql="select * from perkara INNER JOIN jadwalsidangweb ON perkara.perkara_id = jadwalsidangweb.IDPerkara order by ";
+
+                                $hasil=mysqli_query($kon,$sql);
+                                while ($data = mysqli_fetch_array($hasil)) {
+                            ?>
+                                <option value="<?php echo $data['nomor_perkara'];?>"><?php echo $data['nomor_perkara'];?></option>
+                            <?php 
+                                }
+                            ?>
+                    </select>
                 </div>
             </div>
             <div class="form-group">
