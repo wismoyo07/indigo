@@ -49,7 +49,7 @@ DROP TABLE IF EXISTS `input_instrumen`;
 
 CREATE TABLE `input_instrumen` (
   `id_input` int(11) NOT NULL AUTO_INCREMENT,
-  `id_instrumen` varchar(150) NOT NULL,
+  `id_instrumen1` varchar(150) NOT NULL,
   `pa_tujuan` varchar(150) DEFAULT NULL,
   `no_perkara` varchar(150) NOT NULL,
   `tgl_sidang` date NOT NULL,
@@ -59,9 +59,12 @@ CREATE TABLE `input_instrumen` (
   `ketua_majelis` varchar(150) NOT NULL,
   `status` varchar(150) NOT NULL,
   PRIMARY KEY (`id_input`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 /*Data for the table `input_instrumen` */
+
+insert  into `input_instrumen`(`id_input`,`id_instrumen1`,`pa_tujuan`,`no_perkara`,`tgl_sidang`,`pihak_perkara`,`nama_jurusita`,`Biaya_radius`,`ketua_majelis`,`status`) values 
+(1,'1','Pengadilan Agama Kisaran','192/Pdt.G/2021/PA.Sim','2021-05-27','Penggugat','Al Zimy Siregar',150000.00,'ILMAS,S.H.I','Belum Di Cetak');
 
 /*Table structure for table `instrumen` */
 
@@ -152,7 +155,7 @@ CREATE TABLE `users` (
 /*Data for the table `users` */
 
 insert  into `users`(`id_user`,`username`,`password`,`level`,`last_logged_in`,`ip_address`,`display_name`,`email`,`activation_key`) values 
-(1,'administrator','$2y$10$qLgN1yw69/Xsy7W57RiZ8OkFcIGGqRakhqKQzJ5DQeJE2l/jEqRX6','admin','2021-05-27 11:36:22','192.168.0.49','ADMINISTRATOR','admin@gmail.com',NULL),
+(1,'administrator','$2y$10$qLgN1yw69/Xsy7W57RiZ8OkFcIGGqRakhqKQzJ5DQeJE2l/jEqRX6','admin','2021-05-31 15:57:22','::1','ADMINISTRATOR','admin@gmail.com',NULL),
 (2,'zimy','$2y$10$zyvX/SJUOEt.KHRpV5eik.PNDoeJ3Sfg48MZfK859fX7QijCR1JbK','jurusita','0000-00-00 00:00:00','::1','Al Zimy Siregar','zimy@indigo.com',NULL);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
