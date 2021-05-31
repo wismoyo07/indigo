@@ -61,7 +61,7 @@ class Input_Inst extends MY_Controller {
 		$this->data['judul'] = 'Instrumen Masuk';
 		$this->data['tombol'] = 'Tambah';
 		$this->data['alert'] = $this->session->flashdata('alert');
-      $this->data['ddji'] = $this->load->model('ddjnsinst');
+      // $this->data['ddji'] = $this->load->model('ddjnsinst');
 		$this->data['konten'] = 'admin/input_inst/index';
 		$this->load->view('admin/layout/index', $this->data);
 	}

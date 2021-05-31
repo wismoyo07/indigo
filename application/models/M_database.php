@@ -126,12 +126,12 @@ class M_database extends CI_Model {
 		return [];
 	}
 
-	function ddjnsinst(){
+	/** function ddjnsinst(){
 		$query = $this->db->get('instrumen');
 		return $query;
-        /** $data['ddji'] = $this->Dropdown->tampil_data();
+        $data['ddji'] = $this->Dropdown->tampil_data();
         $this->load->view('test', $data); */	
-	}
+	
 
 	public function dropdownreadyputusan($key, $value, $table, $is_null = FALSE) {
 		$query = $this->db->query('SELECT a.no_putusan, a.id_serahterima, b.id_serahterimabb
