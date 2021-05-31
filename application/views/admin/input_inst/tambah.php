@@ -21,7 +21,7 @@
                         <option value="tergugat">Tergugat</option>
                         <option value="termohon">Termohon</option>
                     </select> -->
-                    <?=form_dropdown('id_instrumen', $instrumen, $query['id_instrumen'], "required class='form-control chosen-select' style='width: 400px'");?>
+                    <?=form_dropdown('id_instrumen', $input_instrumen, $query['id_instrumen'], "required class='form-control chosen-select' style='width: 400px'");?>
                 </div>
             </div>            
             <div class="form-group">

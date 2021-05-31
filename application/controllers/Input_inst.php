@@ -57,7 +57,7 @@ class Input_inst extends MY_Controller {
 
    public function index()
 	{
-		$this->data['query'] = $this->db->order_by('id_instrumen', 'DESC')->get($this->table);
+		$this->data['query'] = $this->db->order_by('id_instrumen1', 'DESC')->get($this->table);
 		$this->data['judul'] = 'Instrumen Masuk';
 		$this->data['tombol'] = 'Tambah';
 		$this->data['alert'] = $this->session->flashdata('alert');

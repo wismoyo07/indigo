@@ -31,12 +31,12 @@
                 <tr>
                   <!-- <th style="width:10px"><input type="checkbox" id="check-all"/></th> -->
                   <th style="width:10px;">NO</th>
-                  <th width="">Jenis Instrumen</th>
-                  <th>NO SURAT</th>
-                  <th>NO PUTUSAN</th>
-                  <th>TGL PUTUSAN</th>
-                  <th>NAMA TERPIDANA</th>
-                  <th>BARANG BUKTI</th>
+                  <th width="">No. Perkara</th>
+                  <th>Tgl Sidang</th>
+                  <th>pihak Perkara</th>
+                  <th>Jurusita / JSP</th>
+                  <th>PA Tujuan</th>
+                  <th>Biaya Radius</th>
                   <th>PIHAK 1</th>
                   <th>PIHAK 2</th>
                   <th style="width:85px;">&nbsp;</th>
@@ -48,12 +48,12 @@
             <tr>
                 <!-- <td><input type="checkbox" class="checkbox" name="id_post[]" value="<?=$row->id_post;?>" /></td> -->
                 <td><?=$no;?></td>
-                <td><?=$row->hari_input_bb;?> / <?=indo_date($row->tgl_input_bb); ?></td>
-                <td><?=$row->nomor_perkara; ?></td>
-                <td><?=$row->no_putusan; ?></td>
-                <td><?=indo_date($row->tgl_putusan); ?></td>
-                <td><?=$row->nama_terpidana;?></td>
-                <td><?=$row->barang_bukti;?></td>
+                <td><?=$row->no_perkara; ?></td>
+                <td><?=$row->tgl_sidang; ?></td>
+                <td><?=$row->pihak_perkara; ?></td>
+                <td><?=$row->nama_jurusita;?></td>
+                <td><?=$row->pa_tujuan;?></td>
+                <td><?=$row->biaya_radius;?></td>
                 <td><?=$row->nama_jaksa1;?></td>
                 <td><?=$row->nama_jaksa2;?></td>
                 <td>
