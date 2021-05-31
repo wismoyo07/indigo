@@ -126,7 +126,7 @@ class M_database extends CI_Model {
 		return [];
 	}
 
-	public function ddjnsinst(){
+	function ddjnsinst(){
 		$query = $this->db->get('instrumen');
 		return $query;
         /** $data['ddji'] = $this->Dropdown->tampil_data();
