@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Input_inst extends MY_Controller {
+class Input_Inst extends MY_Controller {
 
    private $pk = 'id_input';
    private $table = 'input_instrumen';
@@ -61,6 +61,7 @@ class Input_inst extends MY_Controller {
 		$this->data['judul'] = 'Instrumen Masuk';
 		$this->data['tombol'] = 'Tambah';
 		$this->data['alert'] = $this->session->flashdata('alert');
+      $this->data['ddji'] = $this->load->model('ddjnsinst');
 		$this->data['konten'] = 'admin/input_inst/index';
 		$this->load->view('admin/layout/index', $this->data);
 	}
@@ -88,6 +89,10 @@ class Input_inst extends MY_Controller {
 			$this->load->view('admin/layout/index', $this->data);
 		}
 	}
+
+   public function ddjenis() {
+
+   }
 
    public function update() {
       $id = $this->uri->segment(3);

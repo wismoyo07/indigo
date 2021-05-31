@@ -5,6 +5,7 @@ class M_database extends CI_Model {
 
 	public function __construct() {
 		date_default_timezone_set('Asia/Jakarta');
+		$this->load->database();
 		$this->sipp = $this->load->database('dbsipp', TRUE);
 	}
 
@@ -106,6 +107,11 @@ class M_database extends CI_Model {
 		return [];
 	}
 
+	/** public function dd_jnsinstrumen(){
+		$query = $this->db->get('instrumen')->result();
+		return $query;
+	} */
+
 	public function dropdownsipp($key, $value, $table, $is_null = FALSE) {
 		$query = $this->sipp->get($table);
 		if ($query->num_rows() > 0) {
@@ -118,6 +124,13 @@ class M_database extends CI_Model {
 			return $data;
 		} 
 		return [];
+	}
+
+	public function ddjnsinst(){
+		$query = $this->db->get('instrumen');
+		return $query;
+        /** $data['ddji'] = $this->Dropdown->tampil_data();
+        $this->load->view('test', $data); */	
 	}
 
 	public function dropdownreadyputusan($key, $value, $table, $is_null = FALSE) {

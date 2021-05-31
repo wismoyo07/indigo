@@ -12,7 +12,7 @@
             <?=$alert;?> 
             <?=form_open_multipart($action, array('role' => 'form', 'class'=>'form-horizontal form-bordered'));?>
         <div class="form-body">
-        <div class="form-group">
+        <!-- <div class="form-group">
                 <label class="col-md-2 control-label">Jenis Instrumen</label>
                 <div class="col-md-10">
                     <!-- <select name="id_instrumen" class="form-control" style="width: 400px">
@@ -20,10 +20,28 @@
                         <option value="pemohon">Pemohon</option>
                         <option value="tergugat">Tergugat</option>
                         <option value="termohon">Termohon</option>
-                    </select> -->
-                    <?=form_dropdown('id_instrumen', $input_instrumen, $query['id_instrumen'], "required class='form-control chosen-select' style='width: 400px'");?>
+                    </select>
+                    <?=form_dropdown('id_instrumen', $input_inst, $query['id_instrumen'], "required class='form-control chosen-select' style='width: 400px'");?>
                 </div>
-            </div>            
+            </div> -->      
+
+            <div class="form-group">
+                <label class="col-md-2 control-label">Jenis Instrumen</label>
+                <div class="col-md-10">
+                    <select class="form-control" id="id_instrumen" name="nama_instrumen">
+                        <!-- <option selected="0">select..</option>
+                            <?php foreach($inst as $inst) : ?>
+                        <option value="<?php echo $inst->id_instrumen;?>"> <?php echo $inst->instrumen_nama; ?></option>
+                            <?php endforeach; ?> -->
+                        
+                            <?php
+                            foreach ($ddji->result() as $tabel){
+                                echo "<option value=".$tabel->id_instrumen.">".$tabel->instrumen_nama."</option>";
+                            }
+                            ?>
+                    </select>
+                </div>
+            </div>
             <div class="form-group">
                 <label class="col-md-2 control-label">No Perkara</label>
                 <div class="col-md-10">
