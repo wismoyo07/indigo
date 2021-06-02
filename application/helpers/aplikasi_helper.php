@@ -174,7 +174,7 @@ if (!function_exists('sex')) {
 if (!function_exists('copyright')) {
    function copyright() {
       date_default_timezone_set('Asia/Jakarta');
-      $date = 2016;
+      $date = 2021;
       $str = date('Y') > $date ? "COPYRIGHT &copy; " . $date . ' - ' . date('Y') : "COPYRIGHT &copy; " . $date;
       return $str;
    }
@@ -182,7 +182,7 @@ if (!function_exists('copyright')) {
 
 if (!function_exists('developed')) {
    function developed() {
-      return 'DIKEMBANGKAN OLEH <a href="#" target="_blank">KEJAKSAAN NEGERI</a>';
+      return 'DIKEMBANGKAN OLEH <a href="#" target="_blank">PENGADILAN AGAMA SIMALUNGUN</a>';
    }
 }
 
