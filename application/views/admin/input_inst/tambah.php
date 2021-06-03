@@ -40,7 +40,7 @@
             <div class="form-group">
                 <label class="col-md-2 control-label">Hari / Tanggal Sidang</label>
                 <div class="col-md-10">
-                    <input style="width: 400px" required autofocus placeholder="Tanggal" type="date" class="form-control" name="tgl_input_bb" value="<?=(set_value('tgl_input_bb')) ? set_value('tgl_input_bb') : $query['tgl_input_bb']?>">
+                    <input style="width: 400px" required autofocus placeholder="Tanggal" type="date" class="form-control" name="tgl_sidang" value="<?=(set_value('tgl_sidang')) ? set_value('tgl_sidang') : $query['tgl_sidang']?>">
                 </div>
             </div>
             <div class="form-group">
@@ -57,7 +57,8 @@
                             }
                                 
                             //Perintah sql untuk menampilkan semua data pada tabel jurusan
-                                $sql="select * from perkara INNER JOIN jadwalsidangweb ON perkara.perkara_id = jadwalsidangweb.IDPerkara order by ";
+                                $tglsdg =date('Y-m-d');
+                                $sql="select nomor_perkara from perkara INNER JOIN jadwalsidangweb ON perkara.perkara_id = jadwalsidangweb.IDPerkara WHERE tgl_Sidang='$tglsdg' order by perkara_id DESC";
 
                                 $hasil=mysqli_query($kon,$sql);
                                 while ($data = mysqli_fetch_array($hasil)) {
