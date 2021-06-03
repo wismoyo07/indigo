@@ -17,7 +17,7 @@
       <!-- small box -->
       <div class="small-box bg-aqua">
         <div class="inner">
-          <h3><?= $jumlahjaksa; ?></h3>
+          <h3><?= $jumlahinstrumen; ?></h3>
 
           <p>JENIS INSTRUMEN</p>
         </div>
@@ -29,33 +29,34 @@
     </div>
   
     <!-- ./col -->
-    <div class="col-lg-4 col-xs-6">
+    <!-- <div class="col-lg-4 col-xs-6"> -->
       <!-- small box -->
-      <div class="small-box bg-yellow">
+      <!-- <div class="small-box bg-yellow">
         <div class="inner">
-          <h3><?= $jumlahserahterimabb; ?></h3>
+          <h3><?= $jumlahjurusita; ?></h3>
 
-          <p>DATA SERAH TERIMA BB</p>
+          <p>PERKARA MASUK</p>
         </div>
         <div class="icon">
           <i class="fa fa-users"></i>
         </div>
-        <a href="<?= site_url('kematian'); ?>" class="small-box-footer">LIHAT DATA <i class="fa fa-arrow-circle-right"></i></a>
+        <a href="<?= site_url('perkara'); ?>" class="small-box-footer">LIHAT DATA <i class="fa fa-arrow-circle-right"></i></a>
       </div>
-    </div>
+    </div> -->
+    
     <!-- ./col -->
     <div class="col-lg-4 col-xs-6">
       <!-- small box -->
       <div class="small-box bg-red">
         <div class="inner">
-          <h3><?= $pendapathukum; ?></h3>
+          <h3><?= $inputinstrumen; ?></h3>
 
-          <p>SURAT PENDAPAT HUKUM</p>
+          <p>INSTRUMEN DIBUAT</p>
         </div>
         <div class="icon">
           <i class="fa fa-gears"></i>
         </div>
-        <a href="<?= site_url('pernikahan'); ?>" class="small-box-footer">LIHAT DATA <i class="fa fa-arrow-circle-right"></i></a>
+        <a href="<?= site_url('input_inst'); ?>" class="small-box-footer">LIHAT DATA <i class="fa fa-arrow-circle-right"></i></a>
       </div>
     </div>
     <!-- ./col -->
