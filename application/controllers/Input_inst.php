@@ -90,10 +90,6 @@ class Input_Inst extends MY_Controller {
 		}
 	}
 
-   public function ddjenis() {
-
-   }
-
    public function update() {
       $id = $this->uri->segment(3);
       if ($_POST) {
@@ -111,9 +107,9 @@ class Input_Inst extends MY_Controller {
          $this->data['action'] = site_url(uri_string());
          $this->data['posts'] = $this->data['post'] = TRUE;
          $this->data['alert'] = $this->session->flashdata('alert');
-         $this->data['input_inst'] = $this->m_database->dropdown('id_jaksa', 'nama_jaksa', 'jaksa');
+         $this->data['input_inst'] = $this->m_database->dropdown('id_input', 'no_perkara', 'input_instrumen');
          $this->data['query'] = $this->m_database->find($this->table, $this->pk, $id)->row_array();
-         $this->data['konten'] = 'admin/serahterimabb/tambah';
+         $this->data['konten'] = 'admin/input_inst/tambah';
          $this->load->view('admin/layout/index', $this->data);
          // print_r($this->data['query']);
       } else {
@@ -154,28 +150,28 @@ class Input_Inst extends MY_Controller {
    }
 
    private function field_data($type = 'create', $photo = NULL) {
-      $data['hari_input_bb'] = $this->input->post('hari_input_bb');
-      $data['tgl_input_bb'] = $this->input->post('tgl_input_bb');
-      $data['no_print'] = $this->input->post('no_print');
-      $data['barang_bukti'] = $this->input->post('barang_bukti');
-      $data['nama_terpidana'] = $this->input->post('nama_terpidana');
-      $data['id_jaksa1'] = $this->input->post('id_jaksa1');
-      $data['id_jaksa2'] = $this->input->post('id_jaksa2');
-      $data['keterangan'] = $this->input->post('keterangan');
-      $data['status_bb'] = $this->input->post('status_bb');
-      $data['no_putusan'] = $this->input->post('no_putusan');
+      $data['id_instrumen1'] = $this->input->post('id_instrumen1');
+      $data['pa_tujuan'] = $this->input->post('pa_tujuan');
+      $data['no_perkara'] = $this->input->post('no_perkara');
+      $data['tgl_sidang'] = $this->input->post('tgl_sidang');
+      $data['pihak_perkara'] = $this->input->post('pihak_perkara');
+      $data['nama_jurusita'] = $this->input->post('nama_jurusita');
+      $data['biaya_radius'] = $this->input->post('biaya_radius');
+      $data['ketua_majelis'] = $this->input->post('ketua_majelis');
+      $data['status '] = $this->input->post('status');
+      /** $data['no_putusan'] = $this->input->post('no_putusan');
       $data['tgl_putusan'] = $this->input->post('tgl_putusan');
-      $data['tgl_no_print'] = $this->input->post('tgl_no_print');
+      $data['tgl_no_print'] = $this->input->post('tgl_no_print'); **/
 
       return $data;
    }
 
    private function validation() {
       $this->load->library('form_validation');
-      $this->form_validation->set_rules('hari_input_bb', 'Hari', 'trim|required');
-      $this->form_validation->set_rules('hari_input_bb', 'Tanggal', 'trim|required');
-      $this->form_validation->set_rules('no_print', 'No Surat', 'trim|required');
-      $this->form_validation->set_rules('no_putusan', 'No Putusan', 'trim|required');
+      $this->form_validation->set_rules('tgl_sidang', 'Hari/ Tanggal Sidang', 'trim|required');
+      $this->form_validation->set_rules('no_perkara', 'Nomor Perkara', 'trim|required');
+      $this->form_validation->set_rules('nama_jurusita', 'Silahkan Pilih J u r u s i t a', 'trim|required');
+      $this->form_validation->set_rules('biaya_radius', 'Input Radius Panggilan', 'trim|required');
       $this->form_validation->set_error_delimiters('', '<br>');
       return $this->form_validation->run();
    }
