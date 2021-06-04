@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 02 Jun 2021 pada 03.39
+-- Generation Time: 04 Jun 2021 pada 03.00
 -- Versi Server: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -59,17 +59,18 @@ CREATE TABLE IF NOT EXISTS `input_instrumen` (
   `tgl_sidang` date NOT NULL,
   `pihak_perkara` enum('Penggugat','Pemohon','Tergugat','Termohon') NOT NULL,
   `nama_jurusita` varchar(150) NOT NULL,
-  `Biaya_radius` double(23,2) DEFAULT NULL,
+  `biaya_radius` double(23,2) DEFAULT NULL,
   `ketua_majelis` varchar(150) NOT NULL,
   `status` varchar(150) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data untuk tabel `input_instrumen`
 --
 
-INSERT INTO `input_instrumen` (`id_input`, `id_instrumen1`, `pa_tujuan`, `no_perkara`, `tgl_sidang`, `pihak_perkara`, `nama_jurusita`, `Biaya_radius`, `ketua_majelis`, `status`) VALUES
-(1, '1', 'Pengadilan Agama Kisaran', '192/Pdt.G/2021/PA.Sim', '2021-05-27', 'Penggugat', 'Al Zimy Siregar', 150000.00, 'ILMAS,S.H.I', 'Belum Di Cetak');
+INSERT INTO `input_instrumen` (`id_input`, `id_instrumen1`, `pa_tujuan`, `no_perkara`, `tgl_sidang`, `pihak_perkara`, `nama_jurusita`, `biaya_radius`, `ketua_majelis`, `status`) VALUES
+(1, '1', 'Pengadilan Agama Kisaran', '192/Pdt.G/2021/PA.Sim', '2021-05-27', 'Penggugat', 'Al Zimy Siregar', 150000.00, 'ILMAS,S.H.I', 'Belum Di Cetak'),
+(2, '3', 'Tanjung Balai', '519/Pdt.G/2021/PA.Sim', '2021-06-15', 'Pemohon', 'penggugat', 200000.00, 'pemohon', 'Belum Terlaksana');
 
 -- --------------------------------------------------------
 
@@ -169,7 +170,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id_user`, `username`, `password`, `level`, `last_logged_in`, `ip_address`, `display_name`, `email`, `activation_key`) VALUES
-(1, 'administrator', '$2y$10$qLgN1yw69/Xsy7W57RiZ8OkFcIGGqRakhqKQzJ5DQeJE2l/jEqRX6', 'admin', '2021-06-02 08:24:15', '::1', 'ADMINISTRATOR', 'admin@gmail.com', NULL),
+(1, 'administrator', '$2y$10$qLgN1yw69/Xsy7W57RiZ8OkFcIGGqRakhqKQzJ5DQeJE2l/jEqRX6', 'admin', '2021-06-03 08:26:50', '::1', 'ADMINISTRATOR', 'admin@gmail.com', NULL),
 (2, 'zimy', '$2y$10$zyvX/SJUOEt.KHRpV5eik.PNDoeJ3Sfg48MZfK859fX7QijCR1JbK', 'admin', '2021-06-02 08:28:43', '::1', 'Al Zimy Siregar', 'zimy@indigo.com', NULL);
 
 --
@@ -231,7 +232,7 @@ MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT for table `input_instrumen`
 --
 ALTER TABLE `input_instrumen`
-MODIFY `id_input` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+MODIFY `id_input` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `instrumen`
 --
