@@ -59,7 +59,7 @@ CREATE TABLE IF NOT EXISTS `input_instrumen` (
   `tgl_sidang` date NOT NULL,
   `pihak_perkara` enum('Penggugat','Pemohon','Tergugat','Termohon') NOT NULL,
   `nama_jurusita` varchar(150) NOT NULL,
-  `Biaya_radius` double(23,2) DEFAULT NULL,
+  `biaya_radius` double(23,2) DEFAULT NULL,
   `ketua_majelis` varchar(150) NOT NULL,
   `status` varchar(150) NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
