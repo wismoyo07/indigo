@@ -74,7 +74,7 @@
           <div class="icon"><i class="fa fa-check"></i></div>
           <strong>Login Sukses !</strong>
           <!-- <br>Halaman akan dialihkan dalam waktu 3 detik!  -->
-          <br>Anda akan diarahkan otomatis ke <?=anchor(site_url('dashboardjs'), 'link');?>
+          <br>Anda akan diarahkan otomatis ke <?=anchor(site_url('dashboard'), 'link');?>
        </div>
       <div id="warning" class="alert alert-warning alert-white rounded" style="display:none;">
           <div class="icon"><i class="fa fa-warning"></i></div>

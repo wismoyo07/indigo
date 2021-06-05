@@ -4,10 +4,10 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="<?= base_url(); ?>assets/images/jaksa.png" class="img-circle" alt="User Image">
+          <img src="<?= base_url(); ?>assets/images/Logo PASIM.png" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p><?=$this->session->userdata('level');?></p>
+          <p><?=$this->session->userdata('display_name');?></p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
@@ -31,7 +31,7 @@
           </a>
         </li>
         <li class="">
-          <a href="<?= site_url('jaksa'); ?>">
+          <a href="<?= site_url('instrumen'); ?>">
             <i class="fa fa-users"></i> <span>DATA INSTRUMEN</span>
             <span class="pull-right-container">
             <!-- <i class="fa fa-angle-left pull-right"></i> -->
@@ -51,7 +51,7 @@
             <li><a href="#"><i class="fa fa-pencil"></i> Tambah Data Akta</a></li>  
           </ul> -->
         <li class="">
-          <a href="<?= site_url('serahterimabb');?>">
+          <a href="<?= site_url('perkara');?>">
             <i class="fa fa-envelope"></i> <span>PERDATA</span>
             <span class="pull-right-container">
             <!-- <i class="fa fa-angle-left pull-right"></i> -->
@@ -63,8 +63,8 @@
         </li>
         </li>     
         <li class="">
-          <a href="<?= site_url('suratpendapathukum');?>">
-            <i class="fa fa-mortar-board"></i> <span>SURAT PENDAPAT HUKUM</span>
+          <a href="<?= site_url('input_inst');?>">
+            <i class="fa fa-mortar-board"></i> <span>INSTRUMEN MASUK</span>
             <span class="pull-right-container">
             <!-- <i class="fa fa-angle-left pull-right"></i> -->
             </span>

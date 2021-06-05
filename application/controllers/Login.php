@@ -5,12 +5,18 @@ class Login extends CI_Controller {
 
 	public function __construct() {
 		parent::__construct();
-		if ($this->session->userdata('level') == 'admin') redirect('dashboard');
+		if ($this->session->userdata('level') == 'admin') {
+			redirect('dashboard');
+		} elseif ($this->session->userdata('level')== 'user') {
+			redirect('dashboardjs');
+		}
 	}
 
 	public function index() {
 		if ($this->auth->is_logged_in() == TRUE) {
 			redirect('dashboard');
+		} elseif ($this->auth->is_logged_in()== TRUE) {
+			redirect('dashboardjs');
 		}
 
 		if ($_POST) {
