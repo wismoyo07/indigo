@@ -132,7 +132,7 @@
       '.chosen-select'           : {},
       '.chosen-select-deselect'  : {allow_single_deselect:true},
       '.chosen-select-no-single' : {disable_search_threshold:10},
-      '.chosen-select-no-results': {no_results_text:'Maap, data tidak ditemukan!'},
+      '.chosen-select-no-results': {no_results_text:'Maaf, data tidak ditemukan!'},
       '.chosen-select-width'     : {width:"95%"}
     }
     for (var selector in config) {
