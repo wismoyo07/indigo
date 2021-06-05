@@ -17,8 +17,8 @@ class Dashboardjs extends MY_Controller {
 		// $this->data['querynikah'] = $this->db->order_by('id_nikah', 'DESC')->where('status', 'diproses')->limit(5)->get('pernikahan');
 		// $this->data['querykematian'] = $this->db->order_by('id_kematian', 'DESC')->where('status', 'diproses')->limit(5)->get('kematian');
 
-		$this->data['konten'] = 'jurusita/dashboard';
-		$this->load->view('admin/layout/index', $this->data);
+		$this->data['konten'] = 'jurusita/dashboardjs';
+		$this->load->view('jurusita/layout/index', $this->data);
 	}
 
 }

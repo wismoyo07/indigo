@@ -26,7 +26,7 @@
       <ul class="sidebar-menu">
         <li class="header">MENU</li>
         <li class="">
-          <a href="<?php echo site_url('dashboard'); ?>">
+          <a href="<?php echo site_url('dashboardjs'); ?>">
             <i class="fa fa-home"></i> <span>DASHBOARD</span>
           </a>
         </li>

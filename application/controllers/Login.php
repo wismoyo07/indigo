@@ -7,7 +7,7 @@ class Login extends CI_Controller {
 		parent::__construct();
 		if ($this->session->userdata('level') == 'admin') {
 			redirect('dashboard');
-		} elseif ($this->session->userdata('level')== 'user') {
+		} elseif ($this->session->userdata('level')== 'jurusita') {
 			redirect('dashboardjs');
 		}
 	}
