@@ -63,7 +63,7 @@
         </li>
         </li>     
         <li class="">
-          <a href="<?= site_url('input_inst');?>">
+          <a href="<?= site_url('masukjs');?>">
             <i class="fa fa-mortar-board"></i> <span>INSTRUMEN MASUK</span>
             <span class="pull-right-container">
             <!-- <i class="fa fa-angle-left pull-right"></i> -->

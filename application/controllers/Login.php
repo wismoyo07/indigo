@@ -7,7 +7,7 @@ class Login extends CI_Controller {
 		parent::__construct();
 		if ($this->session->userdata('level') == 'admin') {
 			redirect('dashboard');
-		} elseif ($this->session->userdata('level')== 'jurusita') {
+		} elseif ($this->session->userdata('level') == 'jurusita') {
 			redirect('dashboardjs');
 		}
 	}
@@ -40,7 +40,7 @@ class Login extends CI_Controller {
 	public function validation()
 	{
 		$this->load->library('form_validation');
-		$this->form_validation->set_rules('username', 'Nama akun', 'trim|required');
+		$this->form_validation->set_rules('username', 'User', 'trim|required');
 		$this->form_validation->set_rules('password', 'Password', 'trim|required');
 		$this->form_validation->set_error_delimiters('<i class="icon-remove-sign"></i> ', '<br>');
 		return $this->form_validation->run();		
