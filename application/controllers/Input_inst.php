@@ -57,7 +57,10 @@ class Input_Inst extends MY_Controller {
 
    public function index()
 	{
-		$this->data['query'] = $this->db->order_by('id_instrumen1', 'DESC')->get($this->table);
+		$this->data['query'] = $this->db->select('p.*, jurusita.*')
+      ->join('jurusita', 'p.id_jurusita = jurusita.id_js')
+      ->order_by('p.id_instrumen1', 'DESC')
+      ->get($this->table . ' p');
 		$this->data['judul'] = 'Instrumen Masuk';
 		$this->data['tombol'] = 'Tambah';
 		$this->data['alert'] = $this->session->flashdata('alert');
@@ -155,9 +158,9 @@ class Input_Inst extends MY_Controller {
       $data['no_perkara'] = $this->input->post('no_perkara');
       $data['tgl_sidang'] = $this->input->post('tgl_sidang');
       $data['pihak_perkara'] = $this->input->post('pihak_perkara');
-      $data['nama_jurusita'] = $this->input->post('nama_jurusita');
+      $data['id_jurusita'] = $this->input->post('id_jurusita');
       $data['biaya_radius'] = $this->input->post('biaya_radius');
-      $data['ketua_majelis'] = $this->input->post('ketua_majelis');
+      $data['id_majelis'] = $this->input->post('id_majelis');
       $data['status '] = $this->input->post('status');
       /** $data['no_putusan'] = $this->input->post('no_putusan');
       $data['tgl_putusan'] = $this->input->post('tgl_putusan');
@@ -170,7 +173,7 @@ class Input_Inst extends MY_Controller {
       $this->load->library('form_validation');
       $this->form_validation->set_rules('tgl_sidang', 'Hari/ Tanggal Sidang', 'trim|required');
       $this->form_validation->set_rules('no_perkara', 'Nomor Perkara', 'trim|required');
-      $this->form_validation->set_rules('nama_jurusita', 'Silahkan Pilih J u r u s i t a', 'trim|required');
+      $this->form_validation->set_rules('id_jurusita', 'Silahkan Pilih J u r u s i t a', 'trim|required');
       $this->form_validation->set_rules('biaya_radius', 'Input Radius Panggilan', 'trim|required');
       $this->form_validation->set_error_delimiters('', '<br>');
       return $this->form_validation->run();

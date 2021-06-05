@@ -51,7 +51,7 @@
                 <td><?=$row->no_perkara; ?></td>
                 <td><?=$row->tgl_sidang; ?></td>
                 <td><?=$row->pihak_perkara; ?></td>
-                <td><?=$row->nama_jurusita;?></td>
+                <td><?=$row->nama_js;?></td>
                 <td><?=$row->pa_tujuan;?></td>
                 <td><?=number_format($row->biaya_radius);?></td>
                 <td><?=$row->ketua_majelis;?></td>
