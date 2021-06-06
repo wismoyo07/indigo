@@ -59,7 +59,7 @@ class Masukjs extends MY_Controller {
 	{
 		$this->data['query'] = $this->db
                                     ->select('input_jurusita.*, users.*')
-                                    ->innerjoin('users ON input_jurusita.id_jurusita=users.id_user')
+                                    ->join('users ON input_jurusita.id_jurusita=users.id_user')
                                     ->where('nama_jurusita = display_name')
                                     ->order_by('id_instrumen1', 'DESC')->get($this->table);
 		$this->data['judul'] = 'Instrumen Masuk';

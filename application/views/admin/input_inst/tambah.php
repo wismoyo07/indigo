@@ -96,7 +96,7 @@
                         <option value="---">Pilih Jurusita / JSP</option>
                         <?php
                             //Membuat koneksi ke database akademik
-                            $kon = mysqli_connect("localhost",'root',"","indigo");
+                            $kon = mysqli_connect("localhost",'root',"","simalungun");
                             if (!$kon){
                                 die("Koneksi database gagal:".mysqli_connect_error());
                             }
@@ -104,12 +104,12 @@
                             //Perintah sql untuk menampilkan semua data pada tabel jurusan
                                 $tglsdg =date('Y-m-d');
                                /** $sql="select nomor_perkara from perkara INNER JOIN jadwalsidangweb ON perkara.perkara_id = jadwalsidangweb.IDPerkara WHERE tgl_Sidang='$tglsdg' order by perkara_id DESC"; */
-                               $sql="select id_user, display_name from users WHERE level='jurusita' order by display_name ASC";
+                               $sql="select id, nama_gelar from jurusita WHERE aktif='Y'";
 
                                 $hasil=mysqli_query($kon,$sql);
                                 while ($data = mysqli_fetch_array($hasil)) {
                             ?>
-                                <option value="<?php echo $data['id_user'];?>"><?php echo $data['display_name'];?></option>
+                                <option value="<?php echo $data['id'];?>"><?php echo $data['nama_gelar'];?></option>
                             <?php 
                                 }
                             ?>
@@ -125,7 +125,7 @@
                         <option value="---">Pilih Ketua Majelis</option>
                         <?php
                             //Membuat koneksi ke database akademik
-                            $kon = mysqli_connect("localhost",'root',"","indigo");
+                            $kon = mysqli_connect("localhost",'root',"","simalungun");
                             if (!$kon){
                                 die("Koneksi database gagal:".mysqli_connect_error());
                             }
@@ -133,12 +133,12 @@
                             //Perintah sql untuk menampilkan semua data pada tabel jurusan
                                 $tglsdg =date('Y-m-d');
                                /** $sql="select nomor_perkara from perkara INNER JOIN jadwalsidangweb ON perkara.perkara_id = jadwalsidangweb.IDPerkara WHERE tgl_Sidang='$tglsdg' order by perkara_id DESC"; */
-                               $sql="select id_user, display_name from users WHERE level='hakim' order by display_name ASC";
+                               $sql="select id, nama_gelar from hakim_pn WHERE aktif='Y'";
 
                                 $hasil=mysqli_query($kon,$sql);
                                 while ($data = mysqli_fetch_array($hasil)) {
                             ?>
-                                <option value="<?php echo $data['id_user'];?>"><?php echo $data['display_name'];?></option>
+                                <option value="<?php echo $data['id'];?>"><?php echo $data['nama_gelar'];?></option>
                             <?php 
                                 }
                             ?>

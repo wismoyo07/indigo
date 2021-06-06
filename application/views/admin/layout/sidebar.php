@@ -73,7 +73,19 @@
             <li><a href="#"><i class="fa fa-pencil"></i> Tambah Data Perkawinan</a></li>  
           </ul> -->
         </li>
-        </li>        
+        </li>  
+        <li class="">
+          <a href="<?= site_url('users');?>">
+            <i class="fa fa-mortar-board"></i> <span>Daftar Pengguna</span>
+            <span class="pull-right-container">
+            <!-- <i class="fa fa-angle-left pull-right"></i> -->
+            </span>
+          </a>
+          <!-- <ul class="treeview-menu">
+            <li><a href="#"><i class="fa fa-pencil"></i> Tambah Data Perkawinan</a></li>  
+          </ul> -->
+        </li>
+        </li>      
         <!-- <li class="treeview active">
           <a href="#">
             <i class="fa fa-files-o"></i>
