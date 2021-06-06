@@ -42,7 +42,7 @@ class Auth {
 				$session_data['username'] = $data->username;
 				$session_data['level'] = $data->level;
 				$session_data['is_logged_in'] = true;
-				if ($data->level == 'admin' || $data->level == 'user') {
+				if ($data->level == 'admin' || $data->level == 'hakim' || $data->level == 'jurusita' || $data->level == 'user') {
 					$session_data['display_name'] = $data->display_name;
 				}
 				$this->CI->session->set_userdata($session_data);

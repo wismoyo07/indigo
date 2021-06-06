@@ -16,7 +16,7 @@
                 <label class="col-md-2 control-label">Jenis Instrumen</label>
                 <div class="col-md-10">
                     <select name="id_instrumen1" class="form-control" style="width: 400px">
-                        <option value="">Pilih Jenis Instrumen</option>
+                        <!-- <option value="">Pilih Jenis Instrumen</option> -->
                         <?php
                             //Membuat koneksi ke database akademik
                             $kon = mysqli_connect("localhost",'root',"","indigo");
