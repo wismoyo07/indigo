@@ -43,7 +43,7 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="<?php echo site_url('dashboard'); ?>" class="logo">
+    <a href="<?php echo site_url('dashboardkm'); ?>" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>APP</b></span>
       <!-- logo for regular state and mobile devices -->
@@ -52,12 +52,12 @@
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
       <!-- Sidebar toggle button-->
-      <?php $this->load->view('admin/layout/topheader'); ?>
+      <?php $this->load->view('hakim/layout/topheader'); ?>
     </nav>
   </header>
   <!-- Left side column. contains the logo and sidebar -->
   <aside class="main-sidebar">
-  <?php $this->load->view('admin/layout/sidebar');?>
+  <?php $this->load->view('hakim/layout/sidebar');?>
   </aside>
 
   <!-- Content Wrapper. Contains page content -->
@@ -67,7 +67,7 @@
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-    <?php $this->load->view('admin/layout/footer'); ?>
+    <?php $this->load->view('hakim/layout/footer'); ?>
   </footer>
 
 </div>
@@ -132,7 +132,7 @@
       '.chosen-select'           : {},
       '.chosen-select-deselect'  : {allow_single_deselect:true},
       '.chosen-select-no-single' : {disable_search_threshold:10},
-      '.chosen-select-no-results': {no_results_text:'Maap, data tidak ditemukan!'},
+      '.chosen-select-no-results': {no_results_text:'Maaf, data tidak ditemukan!'},
       '.chosen-select-width'     : {width:"95%"}
     }
     for (var selector in config) {

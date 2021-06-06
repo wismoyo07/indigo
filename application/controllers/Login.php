@@ -9,6 +9,8 @@ class Login extends CI_Controller {
 			redirect('dashboard');
 		} elseif ($this->session->userdata('level') == 'jurusita') {
 			redirect('dashboardjs');
+		} elseif ($this->session->userdata('level') == 'hakim') {
+			redirect('dashboardkm');
 		}
 	}
 

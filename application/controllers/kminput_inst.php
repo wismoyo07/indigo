@@ -1,13 +1,14 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Masukjs extends MY_Controller {
+class Kminput_inst extends MY_Controller {
 
    private $pk = 'id_input';
    private $table = 'input_instrumen';
 
    public function __construct() {
       parent::__construct();
+      $this->sipp = $this->load->database('dbsipp', TRUE);
    }
 
    /** public function index()
@@ -57,17 +58,17 @@ class Masukjs extends MY_Controller {
 
    public function index()
 	{
-		$this->data['query'] = $this->db
-                                    ->select('input_jurusita.*, users.*')
-                                    ->join('users ON input_jurusita.id_jurusita=users.id_user')
-                                    ->where('nama_jurusita = display_name')
-                                    ->order_by('id_instrumen1', 'DESC')->get($this->table);
+		$this->data['query'] = $this->db->select('p.*, simalungun.jurusita.*, simalungun.hakim_pn.*, simalungun.hakim_pn.nama_gelar as nama_hakim, simalungun.jurusita.nama_gelar as nama_jurusita')
+      ->join('simalungun.jurusita', 'p.id_jurusita = simalungun.jurusita.id')
+      ->join('simalungun.hakim_pn', 'p.id_jurusita = simalungun.hakim_pn.id')
+      ->order_by('p.id_instrumen1', 'DESC')
+      ->get($this->table . ' p');
 		$this->data['judul'] = 'Instrumen Masuk';
 		$this->data['tombol'] = 'Tambah';
 		$this->data['alert'] = $this->session->flashdata('alert');
       // $this->data['ddji'] = $this->load->model('ddjnsinst');
-		$this->data['konten'] = 'jurusita/input_inst/index';
-		$this->load->view('jurusita/layout/index', $this->data);
+		$this->data['konten'] = 'hakim/input_instkm/index';
+		$this->load->view('hakim/layout/index', $this->data);
 	}
 
 	public function tambah()
@@ -89,8 +90,8 @@ class Masukjs extends MY_Controller {
 			$this->data['action'] = site_url(uri_string());
 			$this->data['alert'] = $this->session->flashdata('alert');
 			$this->data['query'] = FALSE;
-			$this->data['konten'] = 'jurusita/input_inst/tambah';
-			$this->load->view('jurusita/layout/index', $this->data);
+			$this->data['konten'] = 'admin/input_inst/tambah';
+			$this->load->view('admin/layout/index', $this->data);
 		}
 	}
 
@@ -113,8 +114,8 @@ class Masukjs extends MY_Controller {
          $this->data['alert'] = $this->session->flashdata('alert');
          $this->data['input_inst'] = $this->m_database->dropdown('id_input', 'no_perkara', 'input_instrumen');
          $this->data['query'] = $this->m_database->find($this->table, $this->pk, $id)->row_array();
-         $this->data['konten'] = 'jurusita/input_inst/tambah';
-         $this->load->view('jurusita/layout/index', $this->data);
+         $this->data['konten'] = 'admin/input_inst/tambah';
+         $this->load->view('admin/layout/index', $this->data);
          // print_r($this->data['query']);
       } else {
          $this->session->set_flashdata('alert', alert('error', status('404')));
@@ -174,7 +175,7 @@ class Masukjs extends MY_Controller {
       $this->load->library('form_validation');
       $this->form_validation->set_rules('tgl_sidang', 'Hari/ Tanggal Sidang', 'trim|required');
       $this->form_validation->set_rules('no_perkara', 'Nomor Perkara', 'trim|required');
-      $this->form_validation->set_rules('nama_jurusita', 'Silahkan Pilih J u r u s i t a', 'trim|required');
+      $this->form_validation->set_rules('id_jurusita', 'Silahkan Pilih J u r u s i t a', 'trim|required');
       $this->form_validation->set_rules('biaya_radius', 'Input Radius Panggilan', 'trim|required');
       $this->form_validation->set_error_delimiters('', '<br>');
       return $this->form_validation->run();

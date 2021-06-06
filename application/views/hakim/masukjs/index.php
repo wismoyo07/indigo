@@ -17,7 +17,7 @@
     <div class="col-xs-12">
     <?=$alert;?>
     <div class="btn-group" style="margin-bottom:10px;">
-            <a href="<?=site_url('input_inst/tambah');?>" class="btn btn-sm bg-green btn-flat"><i class="glyphicon glyphicon-plus"></i> TAMBAH</a>
+            <a href="<?=site_url('masukjs/tambah');?>" class="btn btn-sm bg-green btn-flat"><i class="glyphicon glyphicon-plus"></i> TAMBAH</a>
         </div>
       <div class="box">
         <div class="box-header">

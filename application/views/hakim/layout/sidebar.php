@@ -26,12 +26,12 @@
       <ul class="sidebar-menu">
         <li class="header">MENU</li>
         <li class="">
-          <a href="<?php echo site_url('dashboard'); ?>">
+          <a href="<?php echo site_url('dashboardkm'); ?>">
             <i class="fa fa-home"></i> <span>DASHBOARD</span>
           </a>
         </li>
         <li class="">
-          <a href="<?= site_url('instrumen'); ?>">
+          <a href="<?= site_url('instrumenkm'); ?>">
             <i class="fa fa-users"></i> <span>DATA INSTRUMEN</span>
             <span class="pull-right-container">
             <!-- <i class="fa fa-angle-left pull-right"></i> -->
@@ -63,7 +63,7 @@
         </li>
         </li>     
         <li class="">
-          <a href="<?= site_url('input_inst');?>">
+          <a href="<?= site_url('input_intskm');?>">
             <i class="fa fa-mortar-board"></i> <span>INSTRUMEN MASUK</span>
             <span class="pull-right-container">
             <!-- <i class="fa fa-angle-left pull-right"></i> -->
