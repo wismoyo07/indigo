@@ -54,11 +54,11 @@
                 <td><?=$row->nama_jurusita;?></td>
                 <td><?=$row->pa_tujuan;?></td>
                 <td><?=number_format($row->biaya_radius);?></td>
-                <td><?=$row->ketua_majelis;?></td>
+                <td><?=$row->nama_hakim;?></td>
                 <!-- <td><?=$row->status;?></td> -->
                 <td>
                     <div class="btn-group">
-                        <a href="<?=site_url('input_inst/update/'.$row->id_input);?>" class="btn btn-sm bg-teal" data-toggle="tooltip" data-original-title="Edit"><i class="glyphicon glyphicon-edit"></i></a>
+                        <a href="<?=site_url('masukjs/update/'.$row->id_input);?>" class="btn btn-sm bg-teal" data-toggle="tooltip" data-original-title="Edit"><i class="glyphicon glyphicon-edit"></i></a>
                         <a onClick="return confirm('Apakah anda yakin data akan dihapus ?')" href="<?=site_url('input_inst/delete/'.$row->id_input);?>" class="btn btn-sm bg-red" data-toggle="tooltip" data-original-title="Hapus"><i class="glyphicon glyphicon-trash"></i></a>
                         <a target="_blank" onClick="return confirm('CETAK INSTRUMEN ?')" href="<?=site_url('input_inst/cetak/'.$row->id_input);?>" class="btn btn-sm bg-yellow" data-toggle="tooltip" data-original-title="Print INSTRUMEN"><i class="glyphicon glyphicon-print"></i></a>
                     </div>

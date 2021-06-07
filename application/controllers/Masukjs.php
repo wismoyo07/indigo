@@ -9,7 +9,7 @@ class Masukjs extends MY_Controller {
    public function __construct() {
       parent::__construct();
       $this->sipp = $this->load->database('dbsipp', TRUE);
-	  $this->db = $this->load->database('indigo', TRUE);
+	   // $this->db = $this->load->database('indigo', TRUE);
    }
 
    /** public function index()
@@ -59,16 +59,16 @@ class Masukjs extends MY_Controller {
 
    public function index()
 	{
-		$this->data['query'] = $this->db
-                                    ->select('input_jurusita.*, users.*')
-                                    ->join('users ON input_jurusita.id_jurusita=users.id_user')
-                                    ->where('nama_jurusita = display_name')
-                                    ->order_by('id_instrumen1', 'DESC')->get($this->table);
+		$this->data['query'] = $this->db->select('p.*, simalungun.jurusita.*, simalungun.hakim_pn.*, simalungun.hakim_pn.nama_gelar as nama_hakim, simalungun.jurusita.nama_gelar as nama_jurusita')
+         ->join('simalungun.jurusita', 'p.id_jurusita = simalungun.jurusita.id')
+         ->join('simalungun.hakim_pn', 'p.id_jurusita = simalungun.hakim_pn.id')
+         ->order_by('p.id_instrumen1', 'DESC')
+         ->get($this->table . ' p');
 		$this->data['judul'] = 'Instrumen Masuk';
 		$this->data['tombol'] = 'Tambah';
 		$this->data['alert'] = $this->session->flashdata('alert');
       // $this->data['ddji'] = $this->load->model('ddjnsinst');
-		$this->data['konten'] = 'jurusita/input_inst/index';
+		$this->data['konten'] = 'jurusita/masukjs/index';
 		$this->load->view('jurusita/layout/index', $this->data);
 	}
 
