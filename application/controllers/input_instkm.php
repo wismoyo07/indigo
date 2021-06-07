@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Kminput_inst extends MY_Controller {
+class Input_instkm extends MY_Controller {
 
    private $pk = 'id_input';
    private $table = 'input_instrumen';
@@ -9,6 +9,7 @@ class Kminput_inst extends MY_Controller {
    public function __construct() {
       parent::__construct();
       $this->sipp = $this->load->database('dbsipp', TRUE);
+      $this->db = $this->load->database('indigo', TRUE);
    }
 
    /** public function index()
@@ -59,10 +60,10 @@ class Kminput_inst extends MY_Controller {
    public function index()
 	{
 		$this->data['query'] = $this->db->select('p.*, simalungun.jurusita.*, simalungun.hakim_pn.*, simalungun.hakim_pn.nama_gelar as nama_hakim, simalungun.jurusita.nama_gelar as nama_jurusita')
-      ->join('simalungun.jurusita', 'p.id_jurusita = simalungun.jurusita.id')
-      ->join('simalungun.hakim_pn', 'p.id_jurusita = simalungun.hakim_pn.id')
-      ->order_by('p.id_instrumen1', 'DESC')
-      ->get($this->table . ' p');
+         ->join('simalungun.jurusita', 'p.id_jurusita = simalungun.jurusita.id')
+         ->join('simalungun.hakim_pn', 'p.id_jurusita = simalungun.hakim_pn.id')
+         ->order_by('p.id_instrumen1', 'DESC')
+         ->get($this->table . ' p');
 		$this->data['judul'] = 'Instrumen Masuk';
 		$this->data['tombol'] = 'Tambah';
 		$this->data['alert'] = $this->session->flashdata('alert');
@@ -90,8 +91,8 @@ class Kminput_inst extends MY_Controller {
 			$this->data['action'] = site_url(uri_string());
 			$this->data['alert'] = $this->session->flashdata('alert');
 			$this->data['query'] = FALSE;
-			$this->data['konten'] = 'admin/input_inst/tambah';
-			$this->load->view('admin/layout/index', $this->data);
+			$this->data['konten'] = 'hakim/input_instkm/tambah';
+			$this->load->view('hakim/layout/index', $this->data);
 		}
 	}
 

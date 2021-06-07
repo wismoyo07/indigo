@@ -6,6 +6,12 @@ class Instrumen extends MY_Controller {
 	private $pk = 'id_instrumen';
 	private $table = 'instrumen';
 
+	public function __construct() {
+		parent::__construct();
+		$this->sipp = $this->load->database('dbsipp', TRUE);
+		$this->db = $this->load->database('indigo', TRUE);
+	 }
+	
 	public function index()
 	{
 		$this->data['query'] = $this->db->order_by('id_instrumen', 'DESC')->get($this->table);

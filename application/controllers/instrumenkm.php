@@ -6,13 +6,19 @@ class instrumenkm extends MY_Controller {
 	private $pk = 'id_instrumen';
 	private $table = 'instrumen';
 
+	public function __construct() {
+		parent::__construct();
+		$this->sipp = $this->load->database('dbsipp', TRUE);
+		$this->db = $this->load->database('indigo', TRUE);
+	 }
+
 	public function index()
 	{
 		$this->data['query'] = $this->db->order_by('id_instrumen', 'DESC')->get($this->table);
 		$this->data['judul'] = 'Jenis Instrumen';
 		$this->data['tombol'] = 'Tambah';
 		$this->data['alert'] = $this->session->flashdata('alert');
-		$this->data['konten'] = 'hakim/kminstrumen/index';
+		$this->data['konten'] = 'hakim/instrumenkm/index';
 		$this->load->view('hakim/layout/index', $this->data);
 	}
 

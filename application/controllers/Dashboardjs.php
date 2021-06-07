@@ -3,6 +3,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Dashboardjs extends MY_Controller {
 
+	public function __construct() {
+		parent::__construct();
+		$this->sipp = $this->load->database('dbsipp', TRUE);
+		$this->db = $this->load->database('indigo', TRUE);
+	 }
+	
 	public function index()
 	{
 		if ($this->session->userdata('level') != 'jurusita') {
