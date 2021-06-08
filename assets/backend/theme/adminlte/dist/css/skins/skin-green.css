@@ -3,7 +3,7 @@
  * -----------
  */
 .skin-green .main-header .navbar {
-  background-color: #660000 !important;
+  background-color: #0b6970 !important;
 }
 .skin-green .main-header .navbar .nav > li > a {
   color: #ffffff;
@@ -48,7 +48,7 @@
   border-bottom: 0 solid transparent;
 }
 .skin-green .main-header .logo:hover {
-  background-color: #660000;
+  background-color: #004666;
 }
 .skin-green .main-header li.user-header {
   background-color: #00a65a;
