@@ -16,7 +16,7 @@ class Dashboardjs extends MY_Controller {
 		if ($this->session->userdata('level') != 'jurusita') {
 			redirect('login');
 		}
-
+		
 		$this->data['jumlahinstrumen'] = $this->db->from('instrumen')->count_all_results();
 		// $this->data['jumlahjurusita'] = $this->dbsipp->from('perkara')->count_all_results();
 		$this->data['inputinstrumen'] = $this->db->from('input_instrumen')->count_all_results();

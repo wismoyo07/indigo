@@ -281,6 +281,19 @@ class M_database extends CI_Model {
 			->get('photo', 8);
 	}
 
+	function getDetilUser($enc){
+		try {
+			$query = $this->db->query("SELECT * FROM users WHERE id ='".$enc."'");
+			if($query->num_rows>0){
+				return $query->row(0);
+			}else{
+				return 0;
+    		}
+		} catch (Exception $e) {
+			log_message('error', $e);
+		}
+    }
+
 	public function showpost() {
 		return $this->db->query("
 			SELECT p.id_post,

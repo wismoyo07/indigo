@@ -26,7 +26,7 @@ class Auth {
 	 * @return     bool
 	 */
 	public function login($username, $password) {
-		$where = "username='$username' AND (level='admin' OR level='jurusita' OR level='hakim' OR level='user')";
+		$where = "username ='$username' AND (level='admin' OR level='jurusita' OR level='hakim' OR level='user')";
 		$result = $this->CI
 						->db
 						->where($where)

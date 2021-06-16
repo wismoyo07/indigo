@@ -44,7 +44,7 @@
             </tr>
             </thead>
             <tbody>
-            <?php $no=0; foreach ($query2->result() as $row) { $no++ ?>
+            <?php $no=0; foreach ($query->result() as $row) { $no++ ?>
             <tr>
                 <!-- <td><input type="checkbox" class="checkbox" name="id_post[]" value="<?=$row->id_post;?>" /></td> -->
                 <td><?=$no;?></td>
