@@ -42,8 +42,8 @@
                 <td><?php echo $row->jabatan; ?></td> -->
                 <td>
                     <div class="btn-group">
-                        <a href="<?=site_url('instrumen/edit/'.$row->id_instrumen);?>" class="btn btn-sm bg-teal" data-toggle="tooltip" data-original-title="Edit"><i class="glyphicon glyphicon-edit"></i> </a>
-                        <a onClick="return confirm('Apakah anda yakin data akan dihapus ?')" href="<?=site_url('instrumen/delete/'.$row->id_instrumen);?>" class="btn btn-sm bg-red" data-toggle="tooltip" data-original-title="Hapus"><i class="glyphicon glyphicon-trash"></i></a>
+                        <a href="<?=site_url('instrumenkm/edit/'.$row->id_instrumen);?>" class="btn btn-sm bg-teal" data-toggle="tooltip" data-original-title="Edit"><i class="glyphicon glyphicon-edit"></i> </a>
+                        <a onClick="return confirm('Apakah anda yakin data akan dihapus ?')" href="<?=site_url('instrumenkm/delete/'.$row->id_instrumen);?>" class="btn btn-sm bg-red" data-toggle="tooltip" data-original-title="Hapus"><i class="glyphicon glyphicon-trash"></i></a>
                     </div>
                 </td>
             </tr>

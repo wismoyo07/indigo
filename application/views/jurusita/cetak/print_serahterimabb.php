@@ -94,7 +94,7 @@
       </style>
 </head>
 <body>
-<?php $this->load->view("admin/cetak/header");?>
+<?php $this->load->view("jurusita/cetak/header");?>
 <h1 class="text-center"><u>SERAH TERIMA BARANG BUKTI RAMPASAN</u></h1>
 <!-- <p class="nomor">Nomor : 2342342</p> -->
 <br>

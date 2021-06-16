@@ -59,11 +59,40 @@ class Masukjs extends MY_Controller {
 
    public function index()
 	{
-		$this->data['query'] = $this->db->select('p.*, simalungun.jurusita.*, simalungun.hakim_pn.*, simalungun.hakim_pn.nama_gelar as nama_hakim, simalungun.jurusita.nama_gelar as nama_jurusita')
+		if ($this->session->userdata('level') != 'jurusita')
+			redirect('login');{
+		//($this->session->userdata('is_logged_in')==FALSE){
+			//redirect('login');
+		}
+		
+		$this->data['query2'] = $this->db->select('p.*, simalungun.jurusita.*, simalungun.hakim_pn.*, simalungun.hakim_pn.nama_gelar as nama_hakim, simalungun.jurusita.nama_gelar as nama_jurusita')
          ->join('simalungun.jurusita', 'p.id_jurusita = simalungun.jurusita.id')
-         ->join('simalungun.hakim_pn', 'p.id_jurusita = simalungun.hakim_pn.id')
-         ->order_by('p.id_instrumen1', 'DESC')
+         ->join('simalungun.hakim_pn', 'p.id_majelis = simalungun.hakim_pn.id')
+
+		 ->order_by('p.id_instrumen1', 'DESC')
          ->get($this->table . ' p');
+		
+		/** $functions = $this->nativesession->get_flash_session('function');
+		if ($this->session->userdata('level') != 'jurusita') {
+			redirect('login');
+		}
+		
+		$enc = $this->session->userdata('id_input');
+		$query2 = $this->table->enc;
+		if(!empty($query2->hakim_id)){
+			$where="((majelis_hakim_id IS NOT NULL AND CONCAT(',', majelis_hakim_id, ',') LIKE '%,".$query2->hakim_id.",%' AND '".$query2->hakim_id."' <> '')
+					OR (CONCAT(',', majelis_hakim_id_keberatan, ',') LIKE '%,".$query2->hakim_id.",%' AND '".$query2->hakim_id."' <> '')
+					OR (CONCAT(',', majelis_hakim_id_verzet, ',') LIKE '%,".$query2->hakim_id.",%' AND '".$query2->hakim_id."' <> ''))";
+		}elseif (!empty($query2->panitera_id)) {
+			$where="((panitera_pengganti_id IS NOT NULL AND CONCAT(',', panitera_pengganti_id, ',') LIKE '%,".$query2->panitera_id.",%' AND '".$query2->panitera_id."' <> '')
+					OR (CONCAT(',', panitera_pengganti_id_keberatan, ',') LIKE '%,".$query2->panitera_id.",%' AND '".$query2->panitera_id."' <> '')
+					OR (CONCAT(',', panitera_pengganti_id_verzet, ',') LIKE '%,".$query2->panitera_id.",%' AND '".$query2->panitera_id."' <> ''))";
+		}elseif (!empty($query2->jurusita_id)) {
+			$where="((jurusita_id IS NOT NULL AND CONCAT(',', jurusita_id, ',') LIKE '%,".$query2->jurusita_id.",%' AND '".$query2->jurusita_id."' <> '')
+					OR (CONCAT(',', jurusita_id_keberatan, ',') LIKE '%,".$query2->jurusita_id.",%' AND '".$query2->jurusita_id."' <> '')
+					OR (CONCAT(',', jurusita_id_verzet, ',') LIKE '%,".$query2->jurusita_id.",%' AND '".$query2->jurusita_id."' <> ''))";
+		}
+		**/
 		$this->data['judul'] = 'Instrumen Masuk';
 		$this->data['tombol'] = 'Tambah';
 		$this->data['alert'] = $this->session->flashdata('alert');
@@ -91,7 +120,7 @@ class Masukjs extends MY_Controller {
 			$this->data['action'] = site_url(uri_string());
 			$this->data['alert'] = $this->session->flashdata('alert');
 			$this->data['query'] = FALSE;
-			$this->data['konten'] = 'jurusita/input_inst/tambah';
+			$this->data['konten'] = 'jurusita/masukjs/tambah';
 			$this->load->view('jurusita/layout/index', $this->data);
 		}
 	}
@@ -115,7 +144,7 @@ class Masukjs extends MY_Controller {
          $this->data['alert'] = $this->session->flashdata('alert');
          $this->data['input_inst'] = $this->m_database->dropdown('id_input', 'no_perkara', 'input_instrumen');
          $this->data['query'] = $this->m_database->find($this->table, $this->pk, $id)->row_array();
-         $this->data['konten'] = 'jurusita/input_inst/tambah';
+         $this->data['konten'] = 'jurusita/masukjs/tambah';
          $this->load->view('jurusita/layout/index', $this->data);
          // print_r($this->data['query']);
       } else {
@@ -186,15 +215,27 @@ class Masukjs extends MY_Controller {
    {
 
       $id = $this->uri->segment(3);
-      $this->data['query'] = $this->db
+      /* $this->data['query'] = $this->db
                                  ->select('p.*, c.nama_jaksa as nama_jaksa1, c.pangkat as pangkat1, c.nip as nip1, c.jabatan as jabatan1, d.nama_jaksa as nama_jaksa2, d.pangkat as pangkat2, d.nip as nip2, d.jabatan as jabatan2, c.id_jaksa, c.pangkat, d.id_jaksa, e.*')
                                  ->join('jaksa c', 'p.id_jaksa1 = c.id_jaksa', 'LEFT')
                                  ->join('jaksa d', 'p.id_jaksa2 = d.id_jaksa', 'LEFT')
                                  ->join('pendapathukum e', 'p.id_serahterima = e.id_serahterimabb', 'LEFT')      
                                  ->where('p.id_serahterima', $id)
-                                 ->get($this->table . ' p')->row_array();
-
-     $this->load->view('admin/cetak/print_serahterimabb', $this->data);
+                                 ->get($this->table . ' p')->row_array(); */
+		
+		$this->data['query'] = $this->db->
+								select('p.*, simalungun.jurusita.*, simalungun.hakim_pn.*, simalungun.hakim_pn.nama_gelar as nama_hakim, simalungun.jurusita.nama_gelar as nama_jurusita')
+         ->join('simalungun.jurusita', 'p.id_jurusita = simalungun.jurusita.id')
+         ->join('simalungun.hakim_pn', 'p.id_jurusita = simalungun.hakim_pn.id')
+         ->order_by('p.id_instrumen1', $id)
+         ->get($this->table . ' p')->row_array();
+		 
+		$this->data['query2'] = $this->db->
+								update('p SET status="TERLAKSANA"')
+								->order_by('p.id_instrumen1', $id)
+								->get($this->table . ' p')->row_array();
+		
+     $this->load->view('jurusita/cetak/print_instrumen', $this->data);
 
      $html = $this->output->get_output();
 

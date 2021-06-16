@@ -30,17 +30,17 @@
             <i class="fa fa-home"></i> <span>DASHBOARD</span>
           </a>
         </li>
-        <li class="">
-          <a href="<?= site_url('instrumen'); ?>">
+        <!-- <li class="">
+          <a href="<?= site_url('instrumenjs'); ?>">
             <i class="fa fa-users"></i> <span>DATA INSTRUMEN</span>
             <span class="pull-right-container">
-            <!-- <i class="fa fa-angle-left pull-right"></i> -->
+            <i class="fa fa-angle-left pull-right"></i> 
             </span>
           </a>
          <!--  <ul class="treeview-menu">
             <li><a href="#"><i class="fa fa-pencil"></i> Tambah Data Akta</a></li>  
-          </ul> -->
-        </li>
+          </ul>
+        </li> -->
         <li class="">
           <!-- a href="<?= site_url('#'); ?>">
             <i class="fa fa-user"></i> <span>DATA PIHAK TERKAIT</span>
@@ -51,7 +51,7 @@
             <li><a href="#"><i class="fa fa-pencil"></i> Tambah Data Akta</a></li>  
           </ul> -->
         <li class="">
-          <a href="<?= site_url('perkara');?>">
+          <a href="<?= site_url('perkarajs');?>">
             <i class="fa fa-envelope"></i> <span>PERDATA</span>
             <span class="pull-right-container">
             <!-- <i class="fa fa-angle-left pull-right"></i> -->

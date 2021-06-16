@@ -5,6 +5,8 @@ class Login extends CI_Controller {
 
 	public function __construct() {
 		parent::__construct();
+		$this->sipp = $this->load->database('dbsipp', TRUE);
+		//$this->db = $this->load->database('indigo', TRUE);
 		if ($this->session->userdata('level') == 'admin') {
 			redirect('dashboard');
 		} elseif ($this->session->userdata('level') == 'jurusita') {
@@ -19,6 +21,8 @@ class Login extends CI_Controller {
 			redirect('dashboard');
 		} elseif ($this->auth->is_logged_in()== TRUE) {
 			redirect('dashboardjs');
+		} elseif ($this->auth->is_logged_in()== TRUE) {
+			redirect('dashboardkm');
 		}
 
 		if ($_POST) {

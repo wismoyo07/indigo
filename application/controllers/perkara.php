@@ -12,7 +12,7 @@ class Perkara extends MY_Controller {
    public function __construct() {
       parent::__construct();
       $this->sipp = $this->load->database('dbsipp', TRUE);
-	  $this->db = $this->load->database('indigo', TRUE);
+	  // $this->db = $this->load->database('indigo', TRUE);
    }
 
    public function index()

@@ -19,7 +19,7 @@
                         <option value="---">Pilih Jenis Instrumen</option>
                         <?php
                             //Membuat koneksi ke database akademik
-                            $kon = mysqli_connect("localhost",'root',"","indigo");
+                            $kon = mysqli_connect("localhost",'root',"m4ut4uAj@","indigo");
                             if (!$kon){
                                 die("Koneksi database gagal:".mysqli_connect_error());
                             }

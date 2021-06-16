@@ -2,14 +2,13 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Input_instkm extends MY_Controller {
-
    private $pk = 'id_input';
    private $table = 'input_instrumen';
 
    public function __construct() {
       parent::__construct();
       $this->sipp = $this->load->database('dbsipp', TRUE);
-      $this->db = $this->load->database('indigo', TRUE);
+      // $this->db = $this->load->database('indigo', TRUE);
    }
 
    /** public function index()
@@ -61,10 +60,10 @@ class Input_instkm extends MY_Controller {
 	{
 		$this->data['query'] = $this->db->select('p.*, simalungun.jurusita.*, simalungun.hakim_pn.*, simalungun.hakim_pn.nama_gelar as nama_hakim, simalungun.jurusita.nama_gelar as nama_jurusita')
          ->join('simalungun.jurusita', 'p.id_jurusita = simalungun.jurusita.id')
-         ->join('simalungun.hakim_pn', 'p.id_jurusita = simalungun.hakim_pn.id')
+         ->join('simalungun.hakim_pn', 'p.id_majelis = simalungun.hakim_pn.id')
          ->order_by('p.id_instrumen1', 'DESC')
          ->get($this->table . ' p');
-		$this->data['judul'] = 'Instrumen Masuk';
+		$this->data['judul'] = 'Input Instrumen';
 		$this->data['tombol'] = 'Tambah';
 		$this->data['alert'] = $this->session->flashdata('alert');
       // $this->data['ddji'] = $this->load->model('ddjnsinst');
@@ -115,8 +114,8 @@ class Input_instkm extends MY_Controller {
          $this->data['alert'] = $this->session->flashdata('alert');
          $this->data['input_inst'] = $this->m_database->dropdown('id_input', 'no_perkara', 'input_instrumen');
          $this->data['query'] = $this->m_database->find($this->table, $this->pk, $id)->row_array();
-         $this->data['konten'] = 'admin/input_inst/tambah';
-         $this->load->view('admin/layout/index', $this->data);
+         $this->data['konten'] = 'hakim/input_instkm/tambah';
+         $this->load->view('hakim/layout/index', $this->data);
          // print_r($this->data['query']);
       } else {
          $this->session->set_flashdata('alert', alert('error', status('404')));

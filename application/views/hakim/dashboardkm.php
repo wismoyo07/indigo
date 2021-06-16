@@ -24,7 +24,7 @@
         <div class="icon">
           <i class="fa fa-mortar-board"></i>
         </div>
-        <a href="<?= site_url('instrumen'); ?>" class="small-box-footer">LIHAT DATA <i class="fa fa-arrow-circle-right"></i></a>
+        <a href="<?= site_url('instrumenkm'); ?>" class="small-box-footer">LIHAT DATA <i class="fa fa-arrow-circle-right"></i></a>
       </div>
     </div>
   
@@ -56,7 +56,7 @@
         <div class="icon">
           <i class="fa fa-gears"></i>
         </div>
-        <a href="<?= site_url('input_inst'); ?>" class="small-box-footer">LIHAT DATA <i class="fa fa-arrow-circle-right"></i></a>
+        <a href="<?= site_url('input_instkm'); ?>" class="small-box-footer">LIHAT DATA <i class="fa fa-arrow-circle-right"></i></a>
       </div>
     </div>
     <!-- ./col -->
@@ -65,31 +65,60 @@
   <!-- Main row -->
   <div class="row">
     <!-- Left col -->
-    <!-- <section class="col-lg-12 connectedSortable">
+    <section class="col-lg-12 connectedSortable">
 
       <div class="box box-success">
             <div class="box-header with-border">
-              <h3 class="box-title">DATE TESERAH NDA</h3>
+              <h3 class="box-title">SIDANG HARI INI</h3>
             </div>
-            <div class="box-body">
-              <table class="table table-bordered">
+          <table id="datatables" class="table table-bordered table-hover table-striped table-condensed data-tabel">
+            <thead>
+            <tr>
                 <tr>
-                  <th style="width: 10px">#</th>
-                  <th>Nama</th>
-                  <th>Alamat</th>
-                  <th style="width: 40px">Status</th>
+                  <!-- <th style="width:10px"><input type="checkbox" id="check-all"/></th> -->
+                  <th style="width:10px;">NO</th>
+                  <th width="">Nomor Perkara</th>
+                  <th>Tanggal Register</th>
+                  <th>Klasifikasi Perkara</th>
+                  <th>Para Pihak</th>
+                  <th>Status Perkara</th>
+                  <!-- <th>BARANG BUKTI</th>
+                  <th>PIHAK 1</th>
+                  <th>TGL INPUT</th>
+                  <th style="width:85px;">&nbsp;</th>  -->
                 </tr>
-                
-              </table>
-            </div>
-
-            <div class="box-footer clearfix">
-              <a href="<?= site_url('akta'); ?>" class="btn btn-sm bg-green btn-flat">LIHAT SELENGKAPNYA</a>
-            </div>
-          </div>
+            </tr>
+            </thead>
+            <tbody>
+            <?php $no=0; foreach ($list_perkara->result() as $row) { $no++ ?>
+            
+            <tr>
+                <!-- <td><input type="checkbox" class="checkbox" name="id_post[]" value="<?=$row->perkara_id;?>" /></td> -->
+                <td><?=$no;?></td>
+                <td><?=$row->nomor_perkara;?></td>
+                <td><?=$row->tanggal_pendaftaran; ?></td>
+                <td><?=$row->jenis_perkara_text; ?></td>
+                <td><?=$row->para_pihak; ?></td>
+                <td><?=$row->proses_terakhir_text;?></td>
+                <!-- <td><?=$row->barang_bukti;?></td>
+                <td><?=$row->nama_jaksa;?></td>
+                <td><?=indo_date($row->tgl_input);?></td> -->
+                <!-- <td>
+                    <div class="btn-group">
+                        <a href="<?=site_url('suratpendapathukum/update/'.$row->id_pendapathukum);?>" class="btn btn-sm bg-teal" data-toggle="tooltip" data-original-title="Edit"><i class="glyphicon glyphicon-edit"></i></a>
+                        <a onClick="return confirm('Apakah anda yakin data akan dihapus ?')" href="<?=site_url('suratpendapathukum/delete/'.$row->id_pendapathukum);?>" class="btn btn-sm bg-red" data-toggle="tooltip" data-original-title="Hapus"><i class="glyphicon glyphicon-trash"></i></a>
+                        <a target="_blank" onClick="return confirm('CETAK SURAT SERAH TERIMA BB ?')" href="<?=site_url('suratpendapathukum/cetak/'.$row->id_pendapathukum);?>" class="btn btn-sm bg-yellow" data-toggle="tooltip" data-original-title="Print Surat Serah Terima BB"><i class="glyphicon glyphicon-print"></i></a>
+                    </div>
+                </td> -->
+            </tr>
+            <?php } ?>
+            </tbody>
+            
+          </table>
+        </div>
 
         </section>
-       -->
+       
         </div>
       </section>
 <!-- /.row (main row)

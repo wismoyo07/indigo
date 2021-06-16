@@ -19,7 +19,7 @@
                         <option value="">Pilih Jenis Instrumen</option>
                         <?php
                             //Membuat koneksi ke database akademik
-                            $kon = mysqli_connect("localhost",'root',"","indigo");
+                            $kon = mysqli_connect("localhost",'root',"m4ut4uAj@","indigo");
                             if (!$kon){
                                 die("Koneksi database gagal:".mysqli_connect_error());
                             }
@@ -50,21 +50,31 @@
                     <select name="no_perkara" class="form-control" style="width: 400px">
                         <option value="---">Pilih No. Perkara</option>
                         <?php
-                            //Membuat koneksi ke database akademik
-                            $kon = mysqli_connect("localhost",'root',"","simalungun");
+                            //Membuat koneksi ke dbsipp
+                            $kon = mysqli_connect("localhost",'root',"m4ut4uAj@","simalungun");
                             if (!$kon){
                                 die("Koneksi database gagal:".mysqli_connect_error());
                             }
                                 
-                            //Perintah sql untuk menampilkan semua data pada tabel jurusan
-                                $tglsdg =date('Y-m-d');
-                               /** $sql="select nomor_perkara from perkara INNER JOIN jadwalsidangweb ON perkara.perkara_id = jadwalsidangweb.IDPerkara WHERE tgl_Sidang='$tglsdg' order by perkara_id DESC"; */
-                               $sql="select nomor_perkara from perkara INNER JOIN jadwalsidangweb ON perkara.perkara_id = jadwalsidangweb.IDPerkara order by perkara_id DESC";
+                                $tglsdg = date("Y-m-d");
+								$sql = 'SELECT perkara_jadwal_sidang.perkara_id AS jad_idperk,
+											perkara_jadwal_sidang.tanggal_sidang AS jad_tgl,
+											perkara.perkara_id AS perk_id,
+											perkara.nomor_perkara AS perk_no,
+											perkara.para_pihak AS perk_pihak
+										FROM perkara_jadwal_sidang
+										INNER JOIN perkara
+										ON
+											perkara_jadwal_sidang.perkara_id = perkara.perkara_id
+										WHERE 
+											perkara_jadwal_sidang.tanggal_sidang = "'.$tglsdg.'"';
+								
+                               /** $sql="select nomor_perkara from perkara INNER JOIN jadwalsidangweb ON perkara.perkara_id = jadwalsidangweb.IDPerkara order by perkara_id DESC"; **/
 
                                 $hasil=mysqli_query($kon,$sql);
                                 while ($data = mysqli_fetch_array($hasil)) {
                             ?>
-                                <option value="<?php echo $data['nomor_perkara'];?>"><?php echo $data['nomor_perkara'];?></option>
+                                <option value="<?php echo $data['perk_no'];?>"><?php echo $data['perk_no'];?></option>
                             <?php 
                                 }
                             ?>
@@ -96,7 +106,7 @@
                         <option value="---">Pilih Jurusita / JSP</option>
                         <?php
                             //Membuat koneksi ke database akademik
-                            $kon = mysqli_connect("localhost",'root',"","simalungun");
+                            $kon = mysqli_connect("localhost",'root',"m4ut4uAj@","simalungun");
                             if (!$kon){
                                 die("Koneksi database gagal:".mysqli_connect_error());
                             }
@@ -125,7 +135,7 @@
                         <option value="---">Pilih Ketua Majelis</option>
                         <?php
                             //Membuat koneksi ke database akademik
-                            $kon = mysqli_connect("localhost",'root',"","simalungun");
+                            $kon = mysqli_connect("localhost",'root',"m4ut4uAj@","simalungun");
                             if (!$kon){
                                 die("Koneksi database gagal:".mysqli_connect_error());
                             }

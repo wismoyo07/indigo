@@ -2,6 +2,7 @@
  * Skin: Green
  * -----------
  */
+
 .skin-green .main-header .navbar {
   background-color: #2fbbc5 !important;
 }
@@ -43,12 +44,12 @@
   }
 }
 .skin-green .main-header .logo {
-  background-color: #660000;
+  background-color: #2fbbc5;
   color: #ffffff;
   border-bottom: 0 solid transparent;
 }
 .skin-green .main-header .logo:hover {
-  background-color: #004666;
+  background-color: #660000;
 }
 .skin-green .main-header li.user-header {
   background-color: #00a65a;

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class instrumenkm extends MY_Controller {
+class Instrumenkm extends MY_Controller {
 	
 	private $pk = 'id_instrumen';
 	private $table = 'instrumen';
@@ -9,7 +9,7 @@ class instrumenkm extends MY_Controller {
 	public function __construct() {
 		parent::__construct();
 		$this->sipp = $this->load->database('dbsipp', TRUE);
-		$this->db = $this->load->database('indigo', TRUE);
+		//$this->db = $this->load->database('indigo', TRUE);
 	 }
 
 	public function index()
@@ -41,7 +41,7 @@ class instrumenkm extends MY_Controller {
 			$this->data['action'] = site_url(uri_string());
 			$this->data['alert'] = $this->session->flashdata('alert');
 			$this->data['query'] = FALSE;
-			$this->data['konten'] = 'hakim/kminstrumen/tambah';
+			$this->data['konten'] = 'hakim/instrumenkm/tambah';
 			$this->load->view('hakim/layout/index', $this->data);
 		}
 	}
@@ -67,7 +67,7 @@ class instrumenkm extends MY_Controller {
 			$this->data['posts'] = $this->data['instrumen'] = TRUE;
 			$this->data['alert'] = $this->session->flashdata('alert');
 			$this->data['query'] = $this->m_database->find($this->table, $this->pk, $id_instrumen)->row_array();
-			$this->data['konten'] = 'hakim/kminstrumen/tambah';
+			$this->data['konten'] = 'hakim/instrumenkm/tambah';
 			$this->load->view('hakim/layout/index', $this->data);
 
 		} else {

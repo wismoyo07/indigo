@@ -9,7 +9,7 @@ class Input_Inst extends MY_Controller {
    public function __construct() {
       parent::__construct();
       $this->sipp = $this->load->database('dbsipp', TRUE);
-	  // $this->db = $this->load->database('indigo', TRUE);
+	  //$this->db = $this->load->database('indigo', TRUE);
    }
 
    /** public function index()
@@ -61,7 +61,7 @@ class Input_Inst extends MY_Controller {
 	{
 		$this->data['query'] = $this->db->select('p.*, simalungun.jurusita.*, simalungun.hakim_pn.*, simalungun.hakim_pn.nama_gelar as nama_hakim, simalungun.jurusita.nama_gelar as nama_jurusita')
       ->join('simalungun.jurusita', 'p.id_jurusita = simalungun.jurusita.id')
-      ->join('simalungun.hakim_pn', 'p.id_jurusita = simalungun.hakim_pn.id')
+      ->join('simalungun.hakim_pn', 'p.id_majelis = simalungun.hakim_pn.id')
       ->order_by('p.id_instrumen1', 'DESC')
       ->get($this->table . ' p');
 		$this->data['judul'] = 'Instrumen Masuk';

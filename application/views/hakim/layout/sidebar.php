@@ -30,19 +30,19 @@
             <i class="fa fa-home"></i> <span>DASHBOARD</span>
           </a>
         </li>
-        <li class="">
+        <!-- <li class="">
           <a href="<?= site_url('instrumenkm'); ?>">
             <i class="fa fa-users"></i> <span>DATA INSTRUMEN</span>
             <span class="pull-right-container">
-            <!-- <i class="fa fa-angle-left pull-right"></i> -->
+            <i class="fa fa-angle-left pull-right"></i>
             </span>
-          </a>
+          </a> -->
          <!--  <ul class="treeview-menu">
             <li><a href="#"><i class="fa fa-pencil"></i> Tambah Data Akta</a></li>  
-          </ul> -->
-        </li>
-        <li class="">
-          <!-- a href="<?= site_url('#'); ?>">
+          </ul>
+        </li> -->
+        <!-- <li class="">
+          <a href="<?= site_url('#'); ?>">
             <i class="fa fa-user"></i> <span>DATA PIHAK TERKAIT</span>
             <span class="pull-right-container">
             </span>
@@ -51,8 +51,8 @@
             <li><a href="#"><i class="fa fa-pencil"></i> Tambah Data Akta</a></li>  
           </ul> -->
         <li class="">
-          <a href="<?= site_url('perkara');?>">
-            <i class="fa fa-envelope"></i> <span>PERDATA</span>
+          <a href="<?= site_url('perkarakm');?>">
+            <i class="fa fa-envelope"></i> <span>DAFTAR PERKARA</span>
             <span class="pull-right-container">
             <!-- <i class="fa fa-angle-left pull-right"></i> -->
             </span>
@@ -64,7 +64,7 @@
         </li>     
         <li class="">
           <a href="<?= site_url('input_instkm');?>">
-            <i class="fa fa-mortar-board"></i> <span>INSTRUMEN MASUK</span>
+            <i class="fa fa-mortar-board"></i> <span>INPUT INSTRUMEN</span>
             <span class="pull-right-container">
             <!-- <i class="fa fa-angle-left pull-right"></i> -->
             </span>

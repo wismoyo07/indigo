@@ -19,7 +19,7 @@
                         <option value="---">Pilih Jenis Instrumen</option>
                         <?php
                             //Membuat koneksi ke database akademik
-                            $kon = mysqli_connect("localhost",'root',"","indigo");
+                            $kon = mysqli_connect("localhost",'root',"m4ut4uAj@","indigo");
                             if (!$kon){
                                 die("Koneksi database gagal:".mysqli_connect_error());
                             }
@@ -50,33 +50,43 @@
                     <select name="no_perkara" class="form-control" style="width: 400px">
                         <option value="---">Pilih No. Perkara</option>
                         <?php
-                            //Membuat koneksi ke database akademik
-                            $kon = mysqli_connect("localhost",'root',"","simalungun");
+                            //Membuat koneksi ke dbsipp
+                            $kon = mysqli_connect("localhost",'root',"m4ut4uAj@","simalungun");
                             if (!$kon){
                                 die("Koneksi database gagal:".mysqli_connect_error());
                             }
                                 
-                            //Perintah sql untuk menampilkan semua data pada tabel jurusan
-                                $tglsdg =date('Y-m-d');
-                               /** $sql="select nomor_perkara from perkara INNER JOIN jadwalsidangweb ON perkara.perkara_id = jadwalsidangweb.IDPerkara WHERE tgl_Sidang='$tglsdg' order by perkara_id DESC"; */
-                               $sql="select nomor_perkara from perkara INNER JOIN jadwalsidangweb ON perkara.perkara_id = jadwalsidangweb.IDPerkara order by perkara_id DESC";
+                                $tglsdg = date("Y-m-d");
+								$sql = 'SELECT perkara_jadwal_sidang.perkara_id AS jad_idperk,
+											perkara_jadwal_sidang.tanggal_sidang AS jad_tgl,
+											perkara.perkara_id AS perk_id,
+											perkara.nomor_perkara AS perk_no,
+											perkara.para_pihak AS perk_pihak
+										FROM perkara_jadwal_sidang
+										INNER JOIN perkara
+										ON
+											perkara_jadwal_sidang.perkara_id = perkara.perkara_id
+										WHERE 
+											perkara_jadwal_sidang.tanggal_sidang = "'.$tglsdg.'"';
+								
+                               /** $sql="select nomor_perkara from perkara INNER JOIN jadwalsidangweb ON perkara.perkara_id = jadwalsidangweb.IDPerkara order by perkara_id DESC"; **/
 
                                 $hasil=mysqli_query($kon,$sql);
                                 while ($data = mysqli_fetch_array($hasil)) {
                             ?>
-                                <option value="<?php echo $data['nomor_perkara'];?>"><?php echo $data['nomor_perkara'];?></option>
+                                <option value="<?php echo $data['perk_no'];?>"><?php echo $data['perk_no'];?></option>
                             <?php 
                                 }
                             ?>
                     </select>
                 </div>
             </div>
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <label class="col-md-2 control-label">PA. Tujuan</label>
                 <div class="col-md-10">
                     <input style="width: 400px" required autofocus placeholder="Ketikkan Nama Pengadilan Tujuan" type="text" class="form-control" name="pa_tujuan" value="<?=(set_value('pa_tujuan')) ? set_value('pa_tujuan') : $query['pa_tujuan']?>">
                 </div>
-            </div>
+            </div> -->
             <div class="form-group">
                 <label class="col-md-2 control-label">Panggilan Untuk</label>
                 <div class="col-md-10">
@@ -92,14 +102,27 @@
             <div class="form-group">
                 <label class="col-md-2 control-label">Nama Jurusita / JSP</label>
                 <div class="col-md-10">
-                    <select name="nama_jurusita" class="form-control" style="width: 400px">
+                    <select name="id_jurusita" class="form-control" style="width: 400px">
                         <option value="---">Pilih Jurusita / JSP</option>
-                        <option value="Ansor, S.H">Ansor, S.H</option>
-                        <option value="Muhammad Iqbal Afandi">Muhammad Iqbal Afandi</option>
-                        <option value="Al Zimy Siregar">Al Zimy Siregar</option>
-                        <option value="Eka Ariyandi">Eka Ariyandi</option>
-                        <option value="Dasma Purba">Dasma Purba</option>
-                        <option value="Miharza">Miharza</option>
+                        <?php
+                            //Membuat koneksi ke database akademik
+                            $kon = mysqli_connect("localhost",'root',"m4ut4uAj@","simalungun");
+                            if (!$kon){
+                                die("Koneksi database gagal:".mysqli_connect_error());
+                            }
+                                
+                            //Perintah sql untuk menampilkan semua data pada tabel jurusan
+                                $tglsdg =date('Y-m-d');
+                               /** $sql="select nomor_perkara from perkara INNER JOIN jadwalsidangweb ON perkara.perkara_id = jadwalsidangweb.IDPerkara WHERE tgl_Sidang='$tglsdg' order by perkara_id DESC"; */
+                               $sql="select id, nama_gelar from jurusita WHERE aktif='Y'";
+
+                                $hasil=mysqli_query($kon,$sql);
+                                while ($data = mysqli_fetch_array($hasil)) {
+                            ?>
+                                <option value="<?php echo $data['id'];?>"><?php echo $data['nama_gelar'];?></option>
+                            <?php 
+                                }
+                            ?>
                     </select>
                 </div>
             </div>
@@ -108,15 +131,27 @@
                 <label class="col-md-2 control-label">Ketua Majelis</label>
                 <div class="col-md-10">
                     <!-- <?=form_dropdown('id_jaksa1', $jaksa, $query['id_jaksa1'], "required class='form-control' style='width: 400px'");?> -->
-                    <select name="ketua_majelis" class="form-control" style="width: 400px">
+                    <select name="id_majelis" class="form-control" style="width: 400px">
                         <option value="---">Pilih Ketua Majelis</option>
-                        <option value="Diana Evrina Nasution, S.Ag., S.H.">Diana Evrina Nasution, S.Ag., S.H.</option>
-                        <option value="Muhammad Arif, S.Ag., M.Si.">Muhammad Arif, S.Ag., M.Si.</option>
-                        <option value="ILMAS, S.H.I.">ILMAS, S.H.I.</option>
-                        <option value="Muhammad Irsyad, S.Sy">Muhammad Irsyad, S.Sy</option>
-                        <option value="Muhammad Ali Imron Nasution, S.H.I">Muhammad Ali Imron Nasution, S.H.I</option>
-                        <option value="Muhammad Tsabbit Abdullah, S.H">Muhammad Tsabbit Abdullah, S.H</option>
-                        <option value="Fri Yosmen, S.H">Fri Yosmen, S.H</option>
+                        <?php
+                            //Membuat koneksi ke database akademik
+                            $kon = mysqli_connect("localhost",'root',"m4ut4uAj@","simalungun");
+                            if (!$kon){
+                                die("Koneksi database gagal:".mysqli_connect_error());
+                            }
+                                
+                            //Perintah sql untuk menampilkan semua data pada tabel jurusan
+                                $tglsdg =date('Y-m-d');
+                               /** $sql="select nomor_perkara from perkara INNER JOIN jadwalsidangweb ON perkara.perkara_id = jadwalsidangweb.IDPerkara WHERE tgl_Sidang='$tglsdg' order by perkara_id DESC"; */
+                               $sql="select id, nama_gelar from hakim_pn WHERE aktif='Y'";
+
+                                $hasil=mysqli_query($kon,$sql);
+                                while ($data = mysqli_fetch_array($hasil)) {
+                            ?>
+                                <option value="<?php echo $data['id'];?>"><?php echo $data['nama_gelar'];?></option>
+                            <?php 
+                                }
+                            ?>
                     </select>
                 </div>  
             </div>
@@ -139,7 +174,7 @@
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
                     <button type="submit" class="btn btn-success btn-sm btn-flat"><i class="fa fa-save"></i> <?=$tombol;?></button>
-                    <a href="<?=site_url('input_inst');?>" class="btn btn-warning btn-sm btn-flat"><i class="fa fa-angle-double-left"></i> BACK</a>
+                    <a href="<?=site_url('input_instkm');?>" class="btn btn-warning btn-sm btn-flat"><i class="fa fa-angle-double-left"></i> BACK</a>
                 </div>
             </div>
         </div>

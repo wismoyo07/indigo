@@ -2,12 +2,15 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Dashboard extends MY_Controller {
-
+	
+	private $pk = 'id_input';
+	private $table = 'perkara_jadwal_sidang';
+	
 	public function __construct() {
-		parent::__construct();
-		$this->sipp = $this->load->database('dbsipp', TRUE);
-		//$this->db = $this->load->database('indigo', TRUE);
-	}
+      parent::__construct();
+      $this->sipp = $this->load->database('dbsipp', TRUE);
+	  // $this->db = $this->load->database('indigo', TRUE);
+   }
 	
 	public function index()
 	{
@@ -23,6 +26,13 @@ class Dashboard extends MY_Controller {
 		// $this->data['querynikah'] = $this->db->order_by('id_nikah', 'DESC')->where('status', 'diproses')->limit(5)->get('pernikahan');
 		// $this->data['querykematian'] = $this->db->order_by('id_kematian', 'DESC')->where('status', 'diproses')->limit(5)->get('kematian');
 
+		$tglsdg = date("Y-m-d");
+		$this->data['list_perkara'] = $this->sipp->select('*, perkara.*')
+						->JOIN('perkara','perkara_jadwal_sidang.perkara_id = perkara.perkara_id')
+						->WHERE('perkara_jadwal_sidang.tanggal_sidang = "'.$tglsdg.'"')
+						->order_by('tanggal_pendaftaran','DESC')
+						->get($this->table . ' perkara_jadwal_sidang');;
+		
 		$this->data['konten'] = 'admin/dashboard';
 		$this->load->view('admin/layout/index', $this->data);
 	}

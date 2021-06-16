@@ -19,12 +19,12 @@
 		font-size: 12px;
 	}
 </style>
-<h4 style="font-family: arial !important; text-decoration: underline;">KEJAKSAAN NEGERI</h4><br><br><br>
+<h4 style="font-family: arial !important; text-decoration: underline;">PENGADILAN AGAMA SIMALUNGUN</h4><br><br><br>
 <table class="kop">
 	<tr>
 		<td width="80%">
 			<h1>
-				BERITA ACARA <br>
+				INSTRUMEN <br>
 			</h1>
 		</td>
 	</tr>
