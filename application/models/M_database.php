@@ -107,30 +107,31 @@ class M_database extends CI_Model {
 		return [];
 	}
 
-	public function ddjasidtoday($key, $value, $table, $is_null = FALSE) {
+	/** public function dd_jnsinstrumen(){
+		$query = $this->db->get('instrumen')->result();
+		return $query;
+	} */
+
+	public function ddjasidtoday($id, $key, $value, $table, $is_null = FALSE) {
 		$tglsdg = date("Y-m-d");
-		$query = $this->sipp->select('"'.$table.'".perkara_id AS jad_idperk, "'.$table.'".tanggal_sidang AS jad_tgl, perkara.perkara_id AS perk_id, perkara.nomor_perkara AS "'.$value.'", perkara.para_pihak AS perk_pihak')
-								->join('perkara','"'.$table.'".perkara_id = perkara.perkara_id')
-								->where('""'.$table.'"."'.$key.'"" = "'.$tglsdg.'"')
+		$query = $this->sipp->select(''.$table.'.'.$id.' AS jad_idperk, '.$table.'.tanggal_sidang AS jad_tgl, perkara.perkara_id AS perk_id, perkara.nomor_perkara AS '.$value.', perkara.para_pihak AS perk_pihak')
+								->join('perkara',''.$table.'.'.$id.' = perkara.perkara_id')
+								->where(''.$table.'.'.$key.' = "'.$tglsdg.'"')
 								->get($table);
 		if ($query->num_rows() > 0) {
 			if ($is_null != FALSE) {
 				$data[NULL] = 'PILIH :';
 			}
 			foreach ($query->result() as $row) {
-				$data[$row->$key] = $row->$value;
+				$data[$row->jad_idperk] = $row->$value;
 			}
 			return $data;
 		} 
 		return [];
 	}
-	/** public function dd_jnsinstrumen(){
-		$query = $this->db->get('instrumen')->result();
-		return $query;
-	} */
 
 	public function dropdownsipp($key, $value, $table, $is_null = FALSE) {
-		$query = $this->sipp->get($table);
+		$query = $this->sipp->select(''.$key.', '.$value.'')->where('aktif="Y"')->get($table);
 		if ($query->num_rows() > 0) {
 			if ($is_null != FALSE) {
 				$data[NULL] = 'PILIH :';
@@ -297,19 +298,6 @@ class M_database extends CI_Model {
 			->order_by('photo_id', 'DESC')
 			->get('photo', 8);
 	}
-
-	function getDetilUser($enc){
-		try {
-			$query = $this->db->query("SELECT * FROM users WHERE id ='".$enc."'");
-			if($query->num_rows>0){
-				return $query->row(0);
-			}else{
-				return 0;
-    		}
-		} catch (Exception $e) {
-			log_message('error', $e);
-		}
-    }
 
 	public function showpost() {
 		return $this->db->query("

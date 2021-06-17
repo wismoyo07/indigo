@@ -7,7 +7,7 @@
           <img src="<?= base_url(); ?>assets/images/Logo PASIM.png" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p><?=$this->session->userdata('display_name');?> <?=$this->session->userdata('id');?></p>
+          <p><?=$this->session->userdata('display_name');?></p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>

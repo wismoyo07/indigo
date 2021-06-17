@@ -33,7 +33,6 @@
                   <th style="width:10px;">NO</th>
                   <th width="">Nama Pengguna</th>
                   <th>username</th>
-                  <th>ID Jurusita</th>
                   <th>level</th>
                 </tr>
             </tr>
@@ -45,7 +44,6 @@
                 <td><?=$no;?></td>
                 <td><?=$row->display_name; ?></td>
                 <td><?=$row->username; ?></td>
-                <td><?=$row->id; ?></td>
                 <td><?=$row->level; ?></td>
                 <!-- <td>
                     <div class="btn-group">

@@ -28,35 +28,36 @@
                 <label class="col-md-2 control-label">No Perkara</label>
                 <div class="col-md-10">
                     <!-- <input style="width: 400px" required autofocus placeholder="Hari" type="text" class="form-control" name="no_perkara" value="<?=(set_value('no_perkara')) ? set_value('no_perkara') : $query['no_perkara']?>"> -->
-                    <select name="no_perkara" class="form-control" style="width: 400px">
+                    <!-- <select name="no_perkara" class="form-control" style="width: 400px">
                         <option value="---">Pilih No. Perkara</option>
                         <?php
                             //Membuat koneksi ke dbsipp
-                            $this->konsipp = $this->load->database('dbsipp', TRUE);
-                                                            
-                                $tglsdg = date("Y-m-d");
-								$sql = 'SELECT perkara_jadwal_sidang.perkara_id AS jad_idperk,
-											perkara_jadwal_sidang.tanggal_sidang AS jad_tgl,
-											perkara.perkara_id AS perk_id,
-											perkara.nomor_perkara AS perk_no,
-											perkara.para_pihak AS perk_pihak
-										FROM perkara_jadwal_sidang
-										INNER JOIN perkara
-										ON
-											perkara_jadwal_sidang.perkara_id = perkara.perkara_id
-										WHERE 
-											perkara_jadwal_sidang.tanggal_sidang = "'.$tglsdg.'"';
+                            // $kon = mysqli_connect("localhost",'root',"m4ut4uAj@","simalungun");
+							//$this->perkaradd = $this->load->database('dbsipp', TRUE);
+                            //if (!$kon){
+                              //  die("Koneksi database gagal:".mysqli_connect_error());
+                            //}
+                                
+                                //$tglsdg = date("Y-m-d");
+								//$this->data['noperk'] = $this->perkaradd->select('perkara_jadwal_sidang.perkara_id AS jad_idperk,
+											//perkara_jadwal_sidang.tanggal_sidang AS jad_tgl,
+											//perkara.perkara_id AS perk_id,
+											//perkara.nomor_perkara AS perk_no,
+											//perkara.para_pihak AS perk_pihak')
+											//->join('perkara','perkara_jadwal_sidang.perkara_id = perkara.perkara_id')
+											//->where('perkara_jadwal_sidang.tanggal_sidang = "'.$tglsdg.'"');
 								
                                /** $sql="select nomor_perkara from perkara INNER JOIN jadwalsidangweb ON perkara.perkara_id = jadwalsidangweb.IDPerkara order by perkara_id DESC"; **/
 
-                                $hasil=mysqli_query($konsipp,$sql);
-                                while ($data = mysqli_fetch_array($hasil)) {
+                                //$hasil=mysqli_query($kon,$sql);
+                                //while ($data = mysqli_fetch_array($noperk)) {
                             ?>
-                                <option value="<?php echo $data['perk_no'];?>"><?php echo $data['perk_no'];?></option>
+                                // <option value="<?php echo $data['perk_no'];?>"><?php echo $data['perk_no'];?></option>
                             <?php 
-                                }
-                            ?> 
-                    </select> 
+                                //}
+                            ?>
+                    </select> -->
+					<?=form_dropdown('nomor_perkara', $ddjasid, $query['nomor_perkara'], "required class='form-control' style='width: 400px'");?>
                 </div>
             </div>
             <!-- <div class="form-group">
@@ -80,57 +81,14 @@
             <div class="form-group">
                 <label class="col-md-2 control-label">Nama Jurusita / JSP</label>
                 <div class="col-md-10">
-                    <select name="id_jurusita" class="form-control" style="width: 400px">
-                        <option value="---">Pilih Jurusita / JSP</option>
-                        <?php
-                            //Membuat koneksi ke database akademik
-                            $kon = mysqli_connect("localhost",'root',"m4ut4uAj@","simalungun");
-                            if (!$kon){
-                                die("Koneksi database gagal:".mysqli_connect_error());
-                            }
-                                
-                            //Perintah sql untuk menampilkan semua data pada tabel jurusan
-                                $tglsdg =date('Y-m-d');
-                               /** $sql="select nomor_perkara from perkara INNER JOIN jadwalsidangweb ON perkara.perkara_id = jadwalsidangweb.IDPerkara WHERE tgl_Sidang='$tglsdg' order by perkara_id DESC"; */
-                               $sql="select id, nama_gelar from jurusita WHERE aktif='Y'";
-
-                                $hasil=mysqli_query($kon,$sql);
-                                while ($data = mysqli_fetch_array($hasil)) {
-                            ?>
-                                <option value="<?php echo $data['id'];?>"><?php echo $data['nama_gelar'];?></option>
-                            <?php 
-                                }
-                            ?>
-                    </select>
+                    <?=form_dropdown('nama_gelar', $ddjs, $query['nama_gelar'], "required class='form-control' style='width: 400px'");?>
                 </div>
             </div>
 
             <div class="form-group">
                 <label class="col-md-2 control-label">Ketua Majelis</label>
                 <div class="col-md-10">
-                    <!-- <?=form_dropdown('id_jaksa1', $jaksa, $query['id_jaksa1'], "required class='form-control' style='width: 400px'");?> -->
-                    <select name="id_majelis" class="form-control" style="width: 400px">
-                        <option value="---">Pilih Ketua Majelis</option>
-                        <?php
-                            //Membuat koneksi ke database akademik
-                            $kon = mysqli_connect("localhost",'root',"m4ut4uAj@","simalungun");
-                            if (!$kon){
-                                die("Koneksi database gagal:".mysqli_connect_error());
-                            }
-                                
-                            //Perintah sql untuk menampilkan semua data pada tabel jurusan
-                                $tglsdg =date('Y-m-d');
-                               /** $sql="select nomor_perkara from perkara INNER JOIN jadwalsidangweb ON perkara.perkara_id = jadwalsidangweb.IDPerkara WHERE tgl_Sidang='$tglsdg' order by perkara_id DESC"; */
-                               $sql="select id, nama_gelar from hakim_pn WHERE aktif='Y'";
-
-                                $hasil=mysqli_query($kon,$sql);
-                                while ($data = mysqli_fetch_array($hasil)) {
-                            ?>
-                                <option value="<?php echo $data['id'];?>"><?php echo $data['nama_gelar'];?></option>
-                            <?php 
-                                }
-                            ?>
-                    </select>
+                    <?=form_dropdown('nama_gelar', $ddhakim, $query['nama_gelar'], "required class='form-control' style='width: 400px'");?>
                 </div>  
             </div>
 

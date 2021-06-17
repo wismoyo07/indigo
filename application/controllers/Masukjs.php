@@ -59,24 +59,17 @@ class Masukjs extends MY_Controller {
 
    public function index()
 	{
-		if /** ($this->session->userdata('level') != 'jurusita')
-			redirect('login');{ **/
-		($this->session->userdata('is_logged_in')==FALSE){
-			redirect('login');
+		if ($this->session->userdata('level') != 'jurusita')
+			redirect('login');{
+		//($this->session->userdata('is_logged_in')==FALSE){
+			//redirect('login');
 		}
 		
-      $id_js = $this->session->userdata('id');
-      // $query2 = $this->m_database->getDetilUser($enc);
-      
-      /** $where="((id_jurusita IS NOT NULL AND CONCAT(',', id_jurusita, ',') LIKE '%,".$query2->id.",%' AND '".$query2->id."' <> ''))";
-      **/
-
-		$this->data['query'] = $this->db->select('p.*, simalungun.jurusita.*, simalungun.hakim_pn.*, simalungun.hakim_pn.nama_gelar as nama_hakim, simalungun.jurusita.nama_gelar as nama_jurusita')
+		$this->data['query2'] = $this->db->select('p.*, simalungun.jurusita.*, simalungun.hakim_pn.*, simalungun.hakim_pn.nama_gelar as nama_hakim, simalungun.jurusita.nama_gelar as nama_jurusita')
          ->join('simalungun.jurusita', 'p.id_jurusita = simalungun.jurusita.id')
          ->join('simalungun.hakim_pn', 'p.id_majelis = simalungun.hakim_pn.id')
-         /** ->join('users', 'simalungun.jurusita.id = users.id') **/
-         ->where('p.id_jurusita = "9"')
-		   ->order_by('p.id_instrumen1', 'DESC')
+
+		 ->order_by('p.id_instrumen1', 'DESC')
          ->get($this->table . ' p');
 		
 		/** $functions = $this->nativesession->get_flash_session('function');
@@ -94,10 +87,10 @@ class Masukjs extends MY_Controller {
 			$where="((panitera_pengganti_id IS NOT NULL AND CONCAT(',', panitera_pengganti_id, ',') LIKE '%,".$query2->panitera_id.",%' AND '".$query2->panitera_id."' <> '')
 					OR (CONCAT(',', panitera_pengganti_id_keberatan, ',') LIKE '%,".$query2->panitera_id.",%' AND '".$query2->panitera_id."' <> '')
 					OR (CONCAT(',', panitera_pengganti_id_verzet, ',') LIKE '%,".$query2->panitera_id.",%' AND '".$query2->panitera_id."' <> ''))";
-		}elseif (!empty($query2->id_jurusita)) {
-			$where="((id_jurusita IS NOT NULL AND CONCAT(',', id_jurusita, ',') LIKE '%,".$query2->id_jurusita.",%' AND '".$query2->id_jurusita."' <> '')
-					OR (CONCAT(',', id_jurusita_keberatan, ',') LIKE '%,".$query2->id_jurusita.",%' AND '".$query2->id_jurusita."' <> '')
-					OR (CONCAT(',', id_jurusita_verzet, ',') LIKE '%,".$query2->id_jurusita.",%' AND '".$query2->id_jurusita."' <> ''))";
+		}elseif (!empty($query2->jurusita_id)) {
+			$where="((jurusita_id IS NOT NULL AND CONCAT(',', jurusita_id, ',') LIKE '%,".$query2->jurusita_id.",%' AND '".$query2->jurusita_id."' <> '')
+					OR (CONCAT(',', jurusita_id_keberatan, ',') LIKE '%,".$query2->jurusita_id.",%' AND '".$query2->jurusita_id."' <> '')
+					OR (CONCAT(',', jurusita_id_verzet, ',') LIKE '%,".$query2->jurusita_id.",%' AND '".$query2->jurusita_id."' <> ''))";
 		}
 		**/
 		$this->data['judul'] = 'Instrumen Masuk';

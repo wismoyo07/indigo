@@ -13,7 +13,7 @@ class Users extends MY_Controller {
 
    public function index() {
     $this->data['query'] = $this->db
-                                ->select('*')->where('level!="admin"')->order_by('id_user', 'DESC')->get($this->table);
+    ->select('*')->where('level!="admin"')->order_by('id_user', 'DESC')->get($this->table);
     $this->data['judul'] = 'User INDIGO';
     $this->data['tombol'] = 'Tambah';
     $this->data['alert'] = $this->session->flashdata('alert');

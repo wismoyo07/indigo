@@ -100,18 +100,7 @@ class Input_Inst extends MY_Controller {
       $id = $this->uri->segment(3);
       if ($_POST) {
          if ($this->validation()) {
-               if ($this->function getDetilUser($userid){
-                  try {
-                     $query = $this->db->query("SELECT * FROM v_users WHERE userid=".$userid.";");
-                     if($query->num_rows>0){
-                        return $query->row(0);
-                     }else{
-                        return 0;
-                      }
-                  } catch (Exception $e) {
-                     log_message('error', $e);
-                  }
-                }->update($this->pk, $id, $this->table, $this->field_data('update'))) {
+               if ($this->m_database->update($this->pk, $id, $this->table, $this->field_data('update'))) {
                   $this->session->set_flashdata('alert', alert('success', status('updated')));
                } else {
                   $this->session->set_flashdata('alert', alert('warning', status('ada')));
