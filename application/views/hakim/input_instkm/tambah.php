@@ -32,11 +32,8 @@
                         <option value="---">Pilih No. Perkara</option>
                         <?php
                             //Membuat koneksi ke dbsipp
-                            $kon = $this->load->database('dbsipp', TRUE);
-                            if (!$kon){
-                                die("Koneksi database gagal:".mysqli_connect_error());
-                            }
-                                
+                            $this->konsipp = $this->load->database('dbsipp', TRUE);
+                                                            
                                 $tglsdg = date("Y-m-d");
 								$sql = 'SELECT perkara_jadwal_sidang.perkara_id AS jad_idperk,
 											perkara_jadwal_sidang.tanggal_sidang AS jad_tgl,
@@ -52,7 +49,7 @@
 								
                                /** $sql="select nomor_perkara from perkara INNER JOIN jadwalsidangweb ON perkara.perkara_id = jadwalsidangweb.IDPerkara order by perkara_id DESC"; **/
 
-                                $hasil=mysqli_query($kon,$sql);
+                                $hasil=mysqli_query($konsipp,$sql);
                                 while ($data = mysqli_fetch_array($hasil)) {
                             ?>
                                 <option value="<?php echo $data['perk_no'];?>"><?php echo $data['perk_no'];?></option>

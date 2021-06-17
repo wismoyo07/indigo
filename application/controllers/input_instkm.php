@@ -93,7 +93,7 @@ class Input_instkm extends MY_Controller {
 			$this->data['query'] = FALSE;
          // $this->data['queinst'] = $this->db->order_by('id_instrumen', 'DESC')->get($this->table . 'instrumen');
          $this->data['ddinst'] = $this->m_database->dropdown('id_instrumen', 'instrumen_nama', 'instrumen');
-         $this->data['ddjasid'] = $this->m_database->ddjasidtoday('perkara_id', 'no_perkara', 'perkara_jadwal_sidang');
+         $this->data['ddjasid'] = $this->m_database->ddjasidtoday('tanggal_sidang', 'no_perkara', 'perkara_jadwal_sidang');
 			$this->data['konten'] = 'hakim/input_instkm/tambah';
 			$this->load->view('hakim/layout/index', $this->data);
 		}

@@ -109,9 +109,9 @@ class M_database extends CI_Model {
 
 	public function ddjasidtoday($key, $value, $table, $is_null = FALSE) {
 		$tglsdg = date("Y-m-d");
-		$query = $this->sipp->select('perkara_jadwal_sidang.perkara_id AS jad_idperk, perkara_jadwal_sidang.tanggal_sidang AS jad_tgl, perkara.perkara_id AS perk_id, perkara.nomor_perkara AS perk_no, perkara.para_pihak AS perk_pihak')
-								->join('perkara','perkara_jadwal_sidang.perkara_id = perkara.perkara_id')
-								->where('"perkara_jadwal_sidang.tanggal_sidang" = "'.$tglsdg.'"')
+		$query = $this->sipp->select('"'.$table.'".perkara_id AS jad_idperk, "'.$table.'".tanggal_sidang AS jad_tgl, perkara.perkara_id AS perk_id, perkara.nomor_perkara AS perk_no, perkara.para_pihak AS perk_pihak')
+								->join('perkara','"'.$table.'".perkara_id = perkara.perkara_id')
+								->where('""'.$table.'"."'.$key.'"" = "'.$tglsdg.'"')
 								->get($table);
 		if ($query->num_rows() > 0) {
 			if ($is_null != FALSE) {
