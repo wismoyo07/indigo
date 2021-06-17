@@ -63,7 +63,8 @@ class Input_instkm extends MY_Controller {
          ->join('simalungun.hakim_pn', 'p.id_majelis = simalungun.hakim_pn.id')
          ->order_by('p.id_instrumen1', 'DESC')
          ->get($this->table . ' p');
-		$this->data['judul'] = 'Input Instrumen';
+      
+      $this->data['judul'] = 'Input Instrumen';
 		$this->data['tombol'] = 'Tambah';
 		$this->data['alert'] = $this->session->flashdata('alert');
       // $this->data['ddji'] = $this->load->model('ddjnsinst');
@@ -90,6 +91,9 @@ class Input_instkm extends MY_Controller {
 			$this->data['action'] = site_url(uri_string());
 			$this->data['alert'] = $this->session->flashdata('alert');
 			$this->data['query'] = FALSE;
+         // $this->data['queinst'] = $this->db->order_by('id_instrumen', 'DESC')->get($this->table . 'instrumen');
+         $this->data['ddinst'] = $this->m_database->dropdown('id_instrumen', 'instrumen_nama', 'instrumen');
+         $this->data['ddjasid'] = $this->m_database->ddjasidtoday('perkara_id', 'no_perkara', 'perkara_jadwal_sidang');
 			$this->data['konten'] = 'hakim/input_instkm/tambah';
 			$this->load->view('hakim/layout/index', $this->data);
 		}

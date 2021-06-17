@@ -59,14 +59,14 @@ class Masukjs extends MY_Controller {
 
    public function index()
 	{
-		if ($this->session->userdata('level') != 'jurusita')
-			redirect('login');{
-		//($this->session->userdata('is_logged_in')==FALSE){
-			//redirect('login');
+		if /** ($this->session->userdata('level') != 'jurusita')
+			redirect('login');{ **/
+		($this->session->userdata('is_logged_in')==FALSE){
+			redirect('login');
 		}
 		
-      $enc = $this->session->userdata('id');
-      $query2 = $this->m_database->getDetilUser($enc);
+      $id_js = $this->session->userdata('id');
+      // $query2 = $this->m_database->getDetilUser($enc);
       
       /** $where="((id_jurusita IS NOT NULL AND CONCAT(',', id_jurusita, ',') LIKE '%,".$query2->id.",%' AND '".$query2->id."' <> ''))";
       **/
@@ -75,7 +75,7 @@ class Masukjs extends MY_Controller {
          ->join('simalungun.jurusita', 'p.id_jurusita = simalungun.jurusita.id')
          ->join('simalungun.hakim_pn', 'p.id_majelis = simalungun.hakim_pn.id')
          /** ->join('users', 'simalungun.jurusita.id = users.id') **/
-         ->where('id_jurusita = "'.$query2.'"')
+         ->where('p.id_jurusita = "9"')
 		   ->order_by('p.id_instrumen1', 'DESC')
          ->get($this->table . ' p');
 		

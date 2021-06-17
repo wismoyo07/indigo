@@ -15,26 +15,7 @@
         <div class="form-group">
                 <label class="col-md-2 control-label">Jenis Instrumen</label>
                 <div class="col-md-10">
-                    <select name="id_instrumen1" class="form-control" style="width: 400px">
-                        <option value="---">Pilih Jenis Instrumen</option>
-                        <?php
-                            //Membuat koneksi ke database akademik
-                            $kon = mysqli_connect("localhost",'root',"m4ut4uAj@","indigo");
-                            if (!$kon){
-                                die("Koneksi database gagal:".mysqli_connect_error());
-                            }
-                                
-                            //Perintah sql untuk menampilkan semua data pada tabel jurusan
-                                $sql="select * from instrumen";
-
-                                $hasil=mysqli_query($kon,$sql);
-                                while ($data = mysqli_fetch_array($hasil)) {
-                            ?>
-                                <option value="<?php echo $data['id_instrumen'];?>"><?php echo $data['instrumen_nama'];?></option>
-                            <?php 
-                                }
-                            ?>
-                    </select>
+                    <?=form_dropdown('id_instrumen', $ddinst, $query['id_instrumen'], "required class='form-control' style='width: 400px'");?>
                 </div>
             </div>
             <div class="form-group">
@@ -51,7 +32,7 @@
                         <option value="---">Pilih No. Perkara</option>
                         <?php
                             //Membuat koneksi ke dbsipp
-                            $kon = mysqli_connect("localhost",'root',"m4ut4uAj@","simalungun");
+                            $kon = $this->load->database('dbsipp', TRUE);
                             if (!$kon){
                                 die("Koneksi database gagal:".mysqli_connect_error());
                             }
@@ -77,8 +58,8 @@
                                 <option value="<?php echo $data['perk_no'];?>"><?php echo $data['perk_no'];?></option>
                             <?php 
                                 }
-                            ?>
-                    </select>
+                            ?> 
+                    </select> 
                 </div>
             </div>
             <!-- <div class="form-group">
