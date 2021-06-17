@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Berita Acara</title>
+	<title>INSTRUMEN</title>
 	<style type="text/css">
 	body{
           font-size: 13px;
@@ -95,34 +95,34 @@
 </head>
 <body>
 <?php $this->load->view("jurusita/cetak/header");?>
-<h1 class="text-center"><u><?= $query['hari_input_bb']; ?></u></h1>
+<h1 class="text-center"><u><!-- <?= $query['hari_input_bb']; ?> --></u></h1>
 <!-- <p class="nomor">Nomor : 2342342</p> -->
 <br>
 <br>
 <br>
-<div class="section">
+<!-- <div class="section">
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pada hari ini <?= $query['hari_input_bb']; ?> tanggal <?= indo_date($query['tgl_input_bb']); ?> , bertempat di Kantor Kejaksaan Negeri berdasarkan Surat Perintah <?= $query['no_print']; ?> tanggal <?= indo_date($query['tgl_no_print']); ?> dan Putusan Pengadilan Negeri <?= $query['no_putusan']; ?> tanggal <?= indo_date($query['tgl_putusan']); ?>, yang salah satu amarnya berbunyi :
 </div>
 <div class="section">
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Memerintahkan barang bukti berupa : <?= $query['barang_bukti']; ?>, dinyatakan <u><b><?= $query['status_bb']; ?></b></u> atas nama terpidana <b><?= $query['nama_terpidana']; ?></b> . <b><u>Kami yang bertanda tangan dibawah ini</u></b> :<br>
-</div>
+</div> -->
 
 <div class="section">
   <table>
     <tr>
       <td width="160px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nama</td>
       <td>:</td>
-      <td><?= $query['nama_jaksa2']; ?></td>
+      <td><?= $query['no_perkara']; ?></td>
     </tr>
     <tr>
       <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pangkat / NIP</td>
       <td>:</td>
-      <td><?= $query['pangkat2']; ?> / <?= $query['nip2']; ?></td>
+      <td><!-- <?= $query['pangkat2']; ?> / <?= $query['nip2']; ?> --></td>
     </tr>
     <tr>
       <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Jabatan</td>
       <td>:</td>
-      <td><?= $query['jabatan2']; ?></td>
+      <td><!-- <?= $query['jabatan2']; ?> --></td>
     </tr>
     <tr>
       <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sebagai</td>
@@ -137,17 +137,17 @@
     <tr>
       <td width="160px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nama</td>
       <td>:</td>
-      <td><?= $query['nama_jaksa1']; ?></td>
+      <td> <!-- <?= $query['nama_jaksa1']; ?> --></td>
     </tr>
     <tr>
       <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pangkat / NIP</td>
       <td>:</td>
-      <td><?= $query['pangkat1']; ?> / <?= $query['nip1']; ?></td>
+      <td> <!-- <?= $query['pangkat1']; ?> / <?= $query['nip1']; ?> --></td>
     </tr>
     <tr>
       <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Jabatan</td>
       <td>:</td>
-      <td><?= $query['jabatan1']; ?></td>
+      <td><!-- <?= $query['jabatan1']; ?> --></td>
     </tr>
     <tr>
       <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sebagai</td>
@@ -164,7 +164,7 @@
   <table>
   <tr>
   <ol class="numbering">
-    <li>Barang bukti berupa : <?= $query['barang_bukti'] ?>, <?= $query['status_bb'] ?> tersebut tidak tersangkut dalam perkara lain, serta tidak dalam status sengketa gugatan perdata</li>
+    <li>Barang bukti berupa : <!-- <?= $query['barang_bukti'] ?>, <?= $query['status_bb'] ?> --> tersebut tidak tersangkut dalam perkara lain, serta tidak dalam status sengketa gugatan perdata</li>
     <li>Pihak pertama telah menyerahkan barang bukti rampasan tersebut kepada pihak kedua</li>
     <li>Pihak kedua telah menerima barang bukti rampasan tersebut kepada pihak pertama</li>
     <li>Penyerahan terhadap barang bukti tersebut juga dilampiri foto copy : 
@@ -172,7 +172,7 @@
       <br>
         <li>Surat Perintah Penyitaan dan Berita Acara Penyitaan barang bukti dari Pihak Kepolisian Resort.</li>
         <li>Penetapan dari Pengadilan Negeri tentang Penyitaan barang bukti</li>
-        <li>Penetapan Pengadilan Negeri Nomor <?= $query['no_putusan'] ?> tanggal <?= indo_date($query['no_putusan']) ?></li>
+        <li>Penetapan Pengadilan Negeri Nomor <!-- <?= $query['no_putusan'] ?> --> tanggal <!-- <?= indo_date($query['no_putusan']) ?> --></li>
       </ul>
     </li>
     
@@ -198,8 +198,8 @@
 			<br>
 			<br>
 			<br>
-			<b><u><?= $query['nama_jaksa1'] ?></u></b><br>
-			<?= $query['jabatan1'] ?> <br>NIP. <?= $query['nip1'] ?>
+			<b><u> <!-- <?= $query['nama_jaksa1'] ?> --></u></b><br>
+			<!-- <?= $query['jabatan1'] ?> --> <br>NIP. <!-- <?= $query['nip1'] ?> -->
 		</td>
 		<td></td>
 		<td class="text-center">
@@ -208,8 +208,8 @@
 			<br>
 			<br>
 			<br>
-			<b><u><?= $query['nama_jaksa2'] ?></u></b><br>
-			<?= $query['jabatan2'] ?> <br>NIP. <?= $query['nip2'] ?>
+			<b><u> <!-- <?= $query['nama_jaksa2'] ?> --></u></b><br>
+			<!-- <?= $query['jabatan2'] ?> --> <br>NIP. <!-- <?= $query['nip2'] ?> -->
 		</td>
 	</tr>
 </table>

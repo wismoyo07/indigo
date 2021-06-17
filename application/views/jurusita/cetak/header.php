@@ -24,7 +24,7 @@
 	<tr>
 		<td width="80%">
 			<h1>
-				INSTRUMEN <br>
+			<?= $query['nama_instrumen']; ?> <br>
 			</h1>
 		</td>
 	</tr>

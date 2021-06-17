@@ -223,17 +223,16 @@ class Masukjs extends MY_Controller {
                                  ->where('p.id_serahterima', $id)
                                  ->get($this->table . ' p')->row_array(); */
 		
-		$this->data['query'] = $this->db->
-								select('p.*, simalungun.jurusita.*, simalungun.hakim_pn.*, simalungun.hakim_pn.nama_gelar as nama_hakim, simalungun.jurusita.nama_gelar as nama_jurusita')
-         ->join('simalungun.jurusita', 'p.id_jurusita = simalungun.jurusita.id')
-         ->join('simalungun.hakim_pn', 'p.id_jurusita = simalungun.hakim_pn.id')
-         ->order_by('p.id_instrumen1', $id)
-         ->get($this->table . ' p')->row_array();
+		$this->data['query'] = $this->db->select('p.*, instrumen.*, simalungun.jurusita.*, simalungun.hakim_pn.*, simalungun.hakim_pn.nama_gelar as nama_hakim, simalungun.jurusita.nama_gelar as nama_jurusita')
+                                       ->join('simalungun.jurusita', 'p.id_jurusita = simalungun.jurusita.id')
+                                       ->join('simalungun.hakim_pn', 'p.id_jurusita = simalungun.hakim_pn.id')
+                                       ->join('instrumen', 'p.id_instrumen1 = instrumen.id_instrumen')
+                                       ->order_by('p.id_instrumen1', $id)
+                                       ->get($this->table . ' p')->row_array();
 		 
-		$this->data['query2'] = $this->db->
-								update('p SET status="TERLAKSANA"')
-								->order_by('p.id_instrumen1', $id)
-								->get($this->table . ' p')->row_array();
+		/** $this->data['query2'] = $this->db->update('SET status="TERLAKSANA"')
+								               ->order_by('p.id_instrumen1', $id)
+								               ->get($this->table . ' p')->row_array(); **/
 		
      $this->load->view('jurusita/cetak/print_instrumen', $this->data);
 
